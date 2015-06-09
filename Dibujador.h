@@ -9,7 +9,7 @@
 #define	DIBUJADOR_H
 
 class Dibujador{
-    public:
+    private:
         int A;
         int B;
 };
