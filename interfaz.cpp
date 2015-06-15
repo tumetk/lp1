@@ -5,7 +5,9 @@
 #include <windows.h>
 #include "interfaz.h"
 #include "game.h"
+
 using namespace std;
+
 void gotoxy( int column, int line )
   {
   COORD coord;
@@ -40,34 +42,35 @@ int wherey()
     return -1;
   return result.Y;
   }
+
 void instructions(){
     system("cls");
-    gotoxy(15,8);
-    printf("lalalalalalalalalala");
-    gotoxy(15,9);
-    printf("presiana ESC para regresar");
+    gotoxy(10,38);
+    printf("El siguiente juego consta de una serie de laberintos en los cuales te podras mover para arriba, abajo, derecha e izquierda con las teclas w,s,d y a respectivamente.");
+    gotoxy(10,50);
+    printf("Presiona ESC para regresar");
     char key ;
     do{
         key = getch();
     }while(key != 27);
 }
+
 void maininterface(){
-    gotoxy(10,5);
+     gotoxy(10,8);
     printf("SUPER JUEGO DE LP PARA PASARLO EN PRIMA");
-    gotoxy(15,10);
+    gotoxy(10,10);        
     printf("Jugar");
-    gotoxy(15,11);
+    gotoxy(10,11);
     printf("Instrucciones");
-    gotoxy(15,12);
-    printf("Salir");
-    
-    
+    gotoxy(10,12);
+    printf("Salir"); 
 }
+
 int play(int option){
     char key;
     system("cls");
     maininterface();
-    gotoxy(14,option);
+    gotoxy(9,option);
     printf("+");
     key = getch();
     if(key == 's'){

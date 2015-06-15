@@ -25,7 +25,7 @@ int main(int argc, char** argv) {
     do{
         option = play(option);
         
-    }while(option != 0);
+    }while(option != 0);    
     gotoxy(0,20);
     return 0;
 }
