@@ -1,74 +1,56 @@
-/* 
- * File:   Laberinto.cpp
- * Author: Christian
- * 
- * Created on 15 de junio de 2015, 13:41
- */
 
 #include "Laberinto.h"
+#include <iostream>
 
-Laberinto::Laberinto() {
+using namespace std;
+
+Laberinto::Laberinto(){
+    lab = NULL;
 }
 
-Laberinto::Laberinto(const Laberinto& orig) {
-	SetN(orig.N);
-	SetM(orig.M);
-	SetNivelesArtefacto(orig.nivelesArtefacto);
-	SetPctArtefacto(orig.pctArtefacto);
-	SetNivelesMonstruo(orig.nivelesMonstruo);
-	SetPctMonstruo(orig.pctMonstruo);
+Laberinto::Laberinto(int M,int N) {
+    setN(N);
+    setM(M);
+    lab = new char*[N];
+    for(int i=0; i<N;i++){
+        lab[i] = new char[M]; 
+    }
 }
 
-Laberinto::~Laberinto() {
-    delete[] nivelesMonstruo;
-    delete[] nivelesArtefacto;
-}
-
-void Laberinto::SetNivelesArtefacto(int* nivelesArtefacto) {
-    this->nivelesArtefacto = nivelesArtefacto;
-}
-
-int* Laberinto::GetNivelesArtefacto() const {
-    return nivelesArtefacto;
-}
-
-void Laberinto::SetPctArtefacto(double pctArtefacto) {
-    this->pctArtefacto = pctArtefacto;
-}
-
-double Laberinto::GetPctArtefacto() const {
-    return pctArtefacto;
-}
-
-void Laberinto::SetNivelesMonstruo(int* nivelesMonstruo) {
-    this->nivelesMonstruo = nivelesMonstruo;
-}
-
-int* Laberinto::GetNivelesMonstruo() const {
-    return nivelesMonstruo;
-}
-
-void Laberinto::SetPctMonstruo(double pctMonstruo) {
-    this->pctMonstruo = pctMonstruo;
-}
-
-double Laberinto::GetPctMonstruo() const {
-    return pctMonstruo;
-}
-
-void Laberinto::SetN(int N) {
+void Laberinto::setN(int N) {
     this->N = N;
 }
 
-int Laberinto::GetN() const {
+int Laberinto::getN() const {
     return N;
 }
 
-void Laberinto::SetM(int M) {
+void Laberinto::setM(int M) {
     this->M = M;
 }
 
-int Laberinto::GetM() const {
+int Laberinto::getM() const {
     return M;
 }
 
+Laberinto::Laberinto(const Laberinto& orig) {
+    setN(orig.N);
+    setM(orig.M);
+}
+
+Laberinto::~Laberinto() {
+    delete[] lab;
+}
+
+void Laberinto::cargarCelda(int fila, int col, char car){
+    lab[fila][col] = car;   
+}
+
+void Laberinto::printLaberinto(){
+    for(int i =0 ; i<M; i++){
+        for(int j=0; j<N;j++){
+            cout << lab[i][j];
+        }
+        cout << endl;
+    }
+}
