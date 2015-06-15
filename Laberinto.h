@@ -8,15 +8,22 @@
 #ifndef LABERINTO_H
 #define	LABERINTO_H
 
-class Laberinto{
-    private:
-        int M;
-        int N;
-        double pctMonstruo;
-        int* nivelesMonstruo;
-        double pctArtefacto;
-        int * nivelesArtefacto;
-        
+class Laberinto {
+private:
+    int M;
+    int N;
+    char** lab;
+public:
+    Laberinto();
+    Laberinto(int,int);
+    Laberinto(const Laberinto& orig);
+    virtual ~Laberinto();
+    void cargarCelda(int,int,char);
+    void printLaberinto();
+    void setN(int N);
+    int getN() const;
+    void setM(int M);
+    int getM() const;
 };
 
 #endif	/* LABERINTO_H */
