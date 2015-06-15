@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include <fstream>
 #include <cstdio>
 #include <conio.h>
 #include <windows.h>
@@ -21,7 +22,21 @@
 #include "interfaz.h"
 
 using namespace std;
-
+Game::Game(){
+    this->dibujador       = new Dibujador(5,5);
+    this->jugador         = NULL;
+    this->laberintoActual = NULL;
+    
+    this->listaLaberintos = new Laberinto[1];
+    
+    GestorLaberinto gestor = new GestorLaberinto;
+    this->listaLaberintos[0] = gestor->crear();
+    
+    this->listaartefactos = new Artefacto[3];
+    this->listamonstruos  = new Monstruo[3];
+    this->number          = 1;
+    
+}
 void Game::start(){
     system("cls");
     printf("hola");
