@@ -1,0 +1,3 @@
+P curacion 10
+A chainmail 20
+W espada 10 20

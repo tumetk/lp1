@@ -84,7 +84,8 @@ int play(int option){
         }
     }else if(key == '\r'){
         if (option == 10){
-            Game::start();
+            Game *juego = new Game;
+            juego->start();
             return 10;
         }else if (option == 11){
             instructions();

@@ -11,10 +11,17 @@
 class Game {
     private:
         int number;
-        Laberinto laberintoActual;
+        Laberinto *laberintoActual;
+        Laberinto *listaLaberintos;
+        Dibujador *dibujador;
+        Avatar *jugador ;
+        Monstruo *listamonstruos;
+        Artefacto *listaartefactos;
     public :
-        static void start();
-    
+        Game();
+        void start();
+        virtual ~Game();
+        
 };
 
 
