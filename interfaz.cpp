@@ -46,9 +46,9 @@ int wherey()
 void instructions(){
     system("cls");
     gotoxy(10,38);
-    printf("El siguiente juego consta de una serie de laberintos en los cuales te podras mover para arriba, abajo, derecha e izquierda con las teclas w,s,d y a respectivamente.");
+    cout << "El siguiente juego consta de una serie de laberintos en los cuales te podras mover para arriba, abajo, derecha e izquierda con las teclas w,s,d y a respectivamente.";
     gotoxy(10,50);
-    printf("Presiona ESC para regresar");
+    cout << "Presiona ESC para regresar";
     char key ;
     do{
         key = getch();
@@ -57,13 +57,13 @@ void instructions(){
 
 void maininterface(){
      gotoxy(10,8);
-    printf("SUPER JUEGO DE LP PARA PASARLO EN PRIMA");
+    cout << "SUPER JUEGO DE LP PARA PASARLO EN PRIMA";
     gotoxy(10,10);        
-    printf("Jugar");
+    cout << "Jugar";
     gotoxy(10,11);
-    printf("Instrucciones");
+    cout << "Instrucciones";
     gotoxy(10,12);
-    printf("Salir"); 
+    cout << "Salir"; 
 }
 
 int play(int option){
@@ -71,7 +71,7 @@ int play(int option){
     system("cls");
     maininterface();
     gotoxy(9,option);
-    printf("+");
+    cout << "+";
     key = getch();
     if(key == 's'){
         if (option <12){
