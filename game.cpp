@@ -27,10 +27,10 @@ Game::Game(){
     this->jugador         = NULL;
     this->laberintoActual = NULL;
     
-    this->listaLaberintos = new Laberinto[1];
+    
     
     GestorLaberinto gestor = new GestorLaberinto;
-    this->listaLaberintos[0] = gestor->crear();
+    this->listaLaberintos = gestor->crear();
     
     this->listaartefactos = new Artefacto[3];
     this->listamonstruos  = new Monstruo[3];
