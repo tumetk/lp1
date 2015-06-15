@@ -35,6 +35,7 @@ Game::Game(){
     this->listaartefactos = new Artefacto[3];
     this->listamonstruos  = new Monstruo[3];
     this->number          = 1;
+    printf("tume se la come");
     
 }
 void Game::start(){
