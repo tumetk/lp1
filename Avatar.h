@@ -4,7 +4,8 @@
  *
  * Created on 7 de junio de 2015, 10:48 PM
  */
-
+#include "Entidad.h"
+#include "Monstruo.h"
 #ifndef AVATAR_H
 #define	AVATAR_H
 
@@ -25,7 +26,7 @@ class Avatar:public Entidad{
     	void setExpActual(int);
     	int  getExpActual();
     	void RecibeDano(int);
-    	Artefacto* interaccion(Monstruo,char );
+    	Artefacto* interaccion(Monstruo,char);
 
 };
 
