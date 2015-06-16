@@ -28,6 +28,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Entidad.cpp</itemPath>
+      <itemPath>GestorLaberinto.cpp</itemPath>
       <itemPath>Laberinto.cpp</itemPath>
       <itemPath>ejemplo.cpp</itemPath>
       <itemPath>game.cpp</itemPath>
@@ -71,6 +72,8 @@
       <item path="Entidad.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Entidad.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GestorLaberinto.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="GestorLaberinto.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -134,6 +137,8 @@
       <item path="Entidad.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Entidad.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GestorLaberinto.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="GestorLaberinto.h" ex="false" tool="3" flavor2="0">
       </item>

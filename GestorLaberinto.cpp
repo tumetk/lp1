@@ -1,5 +1,5 @@
 
-#include "GestorDeLaberinto.h"
+#include "GestorLaberinto.h"
 #include "Laberinto.h"
 #include <iostream>
 #include <fstream>
@@ -61,14 +61,15 @@ Laberinto* GestorDeLaberinto::crear(){
 //                if(car != '\n')
 //                    laberinto.cargarCelda(i,j,car);
 //            }
-        for(int i=0; i<M ;i++){
+        for(int i=0; i<N ;i++){
             inputFile.getline(linea,100);
-            for(int j=0;j<N;j++)
+            for(int j=0;j<M;j++)
                 laberinto.cargarCelda(i,j,linea[j]);
         }
-        laberinto.printLaberinto();
+        //laberinto.printLaberinto();
         cout << endl<<endl;
-//        laberintos[numL++] = laberinto;
+        laberintos[numL++] = laberinto;
+        break; //por mientras.
         inputFile >> M;
         inputFile >> N;
         inputFile.get();

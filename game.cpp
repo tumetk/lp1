@@ -29,8 +29,8 @@ Game::Game(){
     
     
     
-    GestorLaberinto gestor = new GestorLaberinto;
-    this->listaLaberintos = gestor->crear();
+    GestorDeLaberinto gestor(1);
+    this->listaLaberintos = gestor.crear();
     
     this->listaartefactos = new Artefacto[3];
     this->listamonstruos  = new Monstruo[3];
@@ -53,7 +53,8 @@ void Game::start(){
     cout << "Presiona ESC para regresar";    
     gotoxy(10,5);        
     cout << "Laberinto";
-    gotoxy(10,25);
+    this->listaLaberintos[0].printLaberinto(10,8); //por mientras.
+    gotoxy(10,70);
     cout << "Acciones";    
     gotoxy(60,5);
     cout << "Avatar";
@@ -79,12 +80,12 @@ void Game::start(){
             gotoxy(i,11);
             cout << "=";
         }
-        gotoxy(i,24);
+        gotoxy(i,69);
         cout << "=";
-        gotoxy(i,26);
+        gotoxy(i,71);
         cout << "=";
     }
-    for(int i=4; i<40; i++){
+    for(int i=4; i<70; i++){
         gotoxy(58,i);
         cout << "=";
     }            

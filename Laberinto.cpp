@@ -1,4 +1,5 @@
 
+#include "interfaz.h"
 #include "Laberinto.h"
 #include <iostream>
 
@@ -39,16 +40,17 @@ Laberinto::Laberinto(const Laberinto& orig) {
 }
 
 Laberinto::~Laberinto() {
-    delete[] lab;
+    //delete[] lab; por mientras.
 }
 
 void Laberinto::cargarCelda(int fila, int col, char car){
     lab[fila][col] = car;   
 }
 
-void Laberinto::printLaberinto(){
-    for(int i =0 ; i<M; i++){
-        for(int j=0; j<N;j++){
+void Laberinto::printLaberinto(int x, int y){
+    for(int i =0 ; i<N; i++){
+        for(int j=0; j<M;j++){
+            gotoxy(x+j,y+i);
             cout << lab[i][j];
         }
         cout << endl;

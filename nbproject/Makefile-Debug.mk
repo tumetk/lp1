@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Entidad.o \
+	${OBJECTDIR}/GestorLaberinto.o \
 	${OBJECTDIR}/Laberinto.o \
 	${OBJECTDIR}/ejemplo.o \
 	${OBJECTDIR}/game.o \
@@ -71,6 +72,11 @@ ${OBJECTDIR}/Entidad.o: Entidad.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Entidad.o Entidad.cpp
+
+${OBJECTDIR}/GestorLaberinto.o: GestorLaberinto.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/GestorLaberinto.o GestorLaberinto.cpp
 
 ${OBJECTDIR}/Laberinto.o: Laberinto.cpp 
 	${MKDIR} -p ${OBJECTDIR}

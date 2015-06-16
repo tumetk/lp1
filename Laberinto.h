@@ -19,7 +19,7 @@ public:
     Laberinto(const Laberinto& orig);
     virtual ~Laberinto();
     void cargarCelda(int,int,char);
-    void printLaberinto();
+    void printLaberinto(int,int);
     void setN(int N);
     int getN() const;
     void setM(int M);
