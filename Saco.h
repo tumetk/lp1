@@ -10,7 +10,7 @@
 
 class Saco{
     private:
-        Artefacto lista[10];
+        Artefacto *lista;
 };
 
 

@@ -9,7 +9,24 @@
 #define	AVATAR_H
 
 class Avatar:public Entidad{
-    
+	private:
+		int expActual;
+		int expNextLevel;
+		int estado;
+		int totalExpNextLevel;
+		int baseAttack;
+    public:
+    	void setBaseAttack(int);
+    	int  getBaseAttack();
+    	void setTotalExpNextLevel(int);
+    	int  getTotalExpNextLevel();
+    	void setExpNextLevel(int);
+    	int  getExpNextLevel();
+    	void setExpActual(int);
+    	int  getExpActual();
+    	void RecibeDano(int);
+    	void interaccion(Monstruo);
+
 };
 
 #endif	/* AVATAR_H */
