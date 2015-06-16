@@ -17,6 +17,32 @@ GestorDeLaberinto::~GestorDeLaberinto() {
 }
 
 Laberinto* GestorDeLaberinto::crear(){
+    //Como usar gestor laberinto
+//int main(int argc, char** argv) {
+//    
+////    int N = 5, M = 5;
+////    Laberinto laberinto(N,M);
+////    char car;
+////    
+////    for(int i=0; i<N;i++)
+////        for(int j=0;j<M;j++){
+////            cin >> car;
+////            laberinto.cargarCelda(i,j,car);
+////        }
+////    cout <<endl<<endl;
+////    laberinto.printLaberinto();
+//    Laberinto* laberintos;
+//    int num = 3;
+//    GestorDeLaberinto gestor(num);
+////    gestor.setNumLab(num);
+//    laberintos = gestor.crear();
+//    for(int i=0; i<gestor.getNumLab();i++){
+//        laberintos[i].printLaberinto();
+//        cout <<endl<<endl;
+//    }
+//    return 0;
+//}
+
     ifstream inputFile("laberintos.txt",ios::in);
     int M,N;
     char car;
