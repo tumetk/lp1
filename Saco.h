@@ -11,6 +11,20 @@
 class Saco{
     private:
         Artefacto *lista;
+        int tipo;
+        int tamano;
+        int capacidad;
+    public:
+        Saco(int);
+        int getTamano();
+        Artefacto *getElemento(int);
+        int getTipo();
+        void setTipo(int);
+        virtual ~Saco();
+        void setTamano(int);
+        int getCapacidad();
+        void setCapacidad(int);
+        int push(Artefacto *);
 };
 
 
