@@ -12,9 +12,9 @@ Laberinto::Laberinto(){
 Laberinto::Laberinto(int M,int N) {
     setN(N);
     setM(M);
-    lab = new char*[N];
+    lab = new char*[N+1];
     for(int i=0; i<N;i++){
-        lab[i] = new char[M]; 
+        lab[i] = new char[M+1]; 
     }
 }
 
@@ -34,9 +34,12 @@ int Laberinto::getM() const {
     return M;
 }
 
+Laberinto Laberinto::getLab() const {
+    return *this;
+}
+
 Laberinto::Laberinto(const Laberinto& orig) {
-    setN(orig.N);
-    setM(orig.M);
+    *this = orig;
 }
 
 Laberinto::~Laberinto() {
@@ -45,6 +48,13 @@ Laberinto::~Laberinto() {
 
 void Laberinto::cargarCelda(int fila, int col, char car){
     lab[fila][col] = car;   
+}
+
+char Laberinto::mostrarCelda(int fila, int col){    
+    char **aux = new char *[fila+1];
+    aux[fila] = new char [col+1];
+    aux[fila][col] = lab[fila][col];
+    return aux[fila][col];   
 }
 
 void Laberinto::printLaberinto(int x, int y){

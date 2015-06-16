@@ -23,13 +23,13 @@
 
 using namespace std;
 Game::Game(){
-    this->dibujador       = new Dibujador(5,5);
+    this->dibujador       = new Dibujador(11,11);
     this->jugador         = NULL;
     this->laberintoActual = NULL;
     
     
     
-    GestorDeLaberinto gestor(1);
+    GestorDeLaberinto gestor(1); //por mientras.
     this->listaLaberintos = gestor.crear();
     
     this->listaartefactos = new Artefacto[3];
@@ -52,21 +52,22 @@ void Game::start(){
     gotoxy(10,1);
     cout << "Presiona ESC para regresar";    
     gotoxy(10,5);        
-    cout << "Laberinto";
-    this->listaLaberintos[0].printLaberinto(10,8); //por mientras.
-    gotoxy(10,70);
+    cout << "Laberinto";                
+    this->dibujador->crear(this->listaLaberintos[0].getLab());    
+    this->dibujador->imprime(10,8);    
+    gotoxy(10,30);
     cout << "Acciones";    
-    gotoxy(60,5);
+    gotoxy(41,5);
     cout << "Avatar";
-    gotoxy(60,10);
+    gotoxy(41,10);
     cout << "Zona de luchas";
-    gotoxy(60,25);
+    gotoxy(41,30);
     cout << "Opciones";
-    gotoxy(60,28);
+    gotoxy(41,33);
     cout << "Atacar";
-    gotoxy(60,29);
+    gotoxy(41,34);
     cout << "Curar";
-    gotoxy(60,30);
+    gotoxy(41,35);
     cout << "Rendir";
     
     for(int i=10; i<80; i++){
@@ -74,30 +75,30 @@ void Game::start(){
         cout << "=";
         gotoxy(i,6);
         cout << "=";
-        if(i>58){
+        if(i>39){
             gotoxy(i,9);
             cout << "=";
             gotoxy(i,11);
             cout << "=";
         }
-        gotoxy(i,69);
+        gotoxy(i,29);
         cout << "=";
-        gotoxy(i,71);
+        gotoxy(i,31);
         cout << "=";
     }
-    for(int i=4; i<70; i++){
-        gotoxy(58,i);
+    for(int i=4; i<50; i++){
+        gotoxy(39,i);
         cout << "=";
     }            
     
-    gotoxy(10,28);    
+    gotoxy(10,33);    
     char tecla = getche();    
     if(tecla == 'A'){        
         char key ;
         do{
             key = getch();
         }while(key != '\r');
-        gotoxy(10,30);
+        gotoxy(10,35);
         cout << "Atacaste";        
     }
     else if(tecla == 'B'){              
@@ -105,7 +106,7 @@ void Game::start(){
         do{
             key = getch();
         }while(key != '\r');
-        gotoxy(10,30);
+        gotoxy(10,35);
         cout << "Te curaste";
     }
     else if(tecla == 'C'){        
@@ -113,13 +114,13 @@ void Game::start(){
         do{
             key = getch();
         }while(key != '\r');
-        gotoxy(10,30);
+        gotoxy(10,35);
         cout << "Te rendiste";
     }
     char key ;
     do{
         key = getch();
-    }while(key != 27);
+    }while(key != 27); 
 }
 
 Game::~Game(){

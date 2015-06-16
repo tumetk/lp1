@@ -19,11 +19,13 @@ public:
     Laberinto(const Laberinto& orig);
     virtual ~Laberinto();
     void cargarCelda(int,int,char);
+    char mostrarCelda(int,int);
     void printLaberinto(int,int);
     void setN(int N);
     int getN() const;
     void setM(int M);
     int getM() const;
+    Laberinto getLab() const;
 };
 
 #endif	/* LABERINTO_H */
