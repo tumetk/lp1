@@ -6,35 +6,35 @@
 #include <windows.h>
 #include "interfaz.h"
 #include "game.h"
-#include "Arma.h"
+/*#include "Arma.h"
 #include "Armadura.h"
 #include "Artefacto.h"
 #include "Avatar.h"
 #include "Celda.h"
 #include "Dibujador.h"
-#include "Entidad.h"
+#include "Entidad.h"*/
 #include "GestorLaberinto.h"
-#include "Laberinto.h"
+#include "Laberinto.h"/*
 #include "Monstruo.h"
 #include "PocionCuracion.h"
 #include "Saco.h"
-#include "ejemplo.h"
+#include "ejemplo.h"*/
 
 
 using namespace std;
 Game::Game(){
-    this->dibujador       = new Dibujador(5,5);
+    /*this->dibujador       = new Dibujador(5,5);
     this->jugador         = NULL;
     this->laberintoActual = NULL;
     
     
-    
+    */
     GestorDeLaberinto gestor(1);
     this->listaLaberintos = gestor.crear();
-    
+    /*
     this->listaartefactos = new Artefacto[3];
     this->listamonstruos  = new Monstruo[3];
-    this->number          = 1;
+    */this->number          = 1;
     cout << "tume se la come";
     
 }
