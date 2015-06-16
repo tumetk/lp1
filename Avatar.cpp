@@ -65,11 +65,13 @@ int  Avatar::getBaseAttack(){
 	return this->baseAttack;
 }
 
-void Avatar::interaccion(Monstruo enemigo){
+Artefacto* Avatar::interaccion(Monstruo enemigo){
 	int attack = rand() %100 +1;
 	if (attack<= enemigo.getProbAttack()){
 		this->RecibeDano(enemigo.getBaseAttacK());
                 if (enemigo.getVidaActual()== 0){
+                    int exp_gain = enemigo.getExpGain();
+                    this->setExpActual(exp_gain);
                     Saco *mi_saco = this->getMisArtefactos();
                     int tamano = mi_saco->getTamano();
                     int elegido = rand()%tamano+1;

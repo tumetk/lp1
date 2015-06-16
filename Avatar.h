@@ -25,7 +25,7 @@ class Avatar:public Entidad{
     	void setExpActual(int);
     	int  getExpActual();
     	void RecibeDano(int);
-    	void interaccion(Monstruo);
+    	Artefacto* interaccion(Monstruo);
 
 };
 

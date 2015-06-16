@@ -23,11 +23,11 @@
 using namespace std;
 
 void Entidad::setPosX(int posx){
-	this->posx = posx;
+	this->posX = posx;
 }
 
 void Entidad::setPoxY(int posy){
-	this->posy = posy
+	this->posY = posy;
 }
 
 void Entidad::setMaxVida(int maxVida){
@@ -45,11 +45,11 @@ char *Entidad::getNombre(){
 }
 
 int  Entidad::getPosX(){
-	return this->posx;
+	return this->posX;
 }
 
 int  Entidad::getPosY(){
-	return this->posy;
+	return this->posY;
 }
 
 int  Entidad::getMaxVida(){
@@ -57,8 +57,8 @@ int  Entidad::getMaxVida(){
 }
 
 void Entidad::move(int posx,int posy){
-	this->posx = this->posx + posx;
-	this->posy = this->posy + posy;
+	this->posX = this->posX + posx;
+	this->posY = this->posY + posy;
 }
 
 void Entidad::setNivel(int nivel){
@@ -70,7 +70,7 @@ int Entidad::getNivel(){
 }
 
 Entidad::Entidad(char *nombre, int maxVida){
-	this->posx = 0 ;
+	this->posX = 0 ;
 	this->posY = 0 ;
 	this->nivel = 1 ;
 	this->nombre = new char[strlen(nombre)+1];
@@ -86,7 +86,7 @@ Entidad::~Entidad(){
 }
 
 void Entidad::agregarArtefacto(Artefacto objeto){
-		this->saco->push(objeto);
+		this->misArtefactos->push(objeto);
 }
 
 void Entidad::setVidaActual(int vida){
@@ -95,4 +95,8 @@ void Entidad::setVidaActual(int vida){
 
 int Entidad::getVidaActual (){
 	return this->vidaActual;
+}
+
+Saco* Entidad::getMisArtefactos(){
+    return this->misArtefactos;
 }
