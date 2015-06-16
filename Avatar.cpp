@@ -34,7 +34,7 @@ void Avatar::setExpActual(int exp_gain){
 		this->expActual = resta;
 		this->totalExpNextLevel = this->totalExpNextLevel + this->totalExpNextLevel/2;
 		this->expNextLevel = this->totalExpNextLevel - resta;
-		this->nivel = this->nivel +1;
+		this->setNivel(this->getNivel+1) ;
 		this->baseAttack = this->baseAttack + 10*this->nivel;
 
 	}else{
