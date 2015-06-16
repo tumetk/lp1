@@ -35,7 +35,7 @@ class Entidad{
     	int  getMaxVida();
         void move(int,int);
         void getMisArtefactos();
-        void agregarArtefacto(Artefacto);
+        void agregarArtefacto(Artefacto*);
 };
 
 #endif	/* ENTIDAD_H */

@@ -85,7 +85,7 @@ Entidad::~Entidad(){
 	delete this;
 }
 
-void Entidad::agregarArtefacto(Artefacto objeto){
+void Entidad::agregarArtefacto(Artefacto* objeto){
 		this->misArtefactos->push(objeto);
 }
 
