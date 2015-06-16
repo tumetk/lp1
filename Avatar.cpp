@@ -35,7 +35,7 @@ void Avatar::setExpActual(int exp_gain){
 		this->totalExpNextLevel = this->totalExpNextLevel + this->totalExpNextLevel/2;
 		this->expNextLevel = this->totalExpNextLevel - resta;
 		this->setNivel(this->getNivel+1) ;
-		this->baseAttack = this->baseAttack + 10*this->nivel;
+		this->baseAttack = this->baseAttack + 10*this->getNivel();
 
 	}else{
 		this->expNextLevel = this->expNextLevel - exp_gain;
@@ -45,11 +45,11 @@ int Avatar::getExpActual(){
 	return this->expActual;
 }
 void Avatar::RecibeDano(int dano){
-	if (this->vidaActual - dano <= 0){
-		this->vidaActual = 0 ;
-		this->estado = 0 
+	if (this->getVidaActual() - dano <= 0){
+		this->setVidaActual(0)  ;
+		this->estado = 0 ;
 	}else{
-		this->vidaActual = this->vidaActual - dano;
+		this->setVidaActual(this->getVidaActual()- dano);
 	}
 }
 void Avatar::setTotalExpNextLevel(int exp){
@@ -68,6 +68,15 @@ int  Avatar::getBaseAttack(){
 void Avatar::interaccion(Monstruo enemigo){
 	int attack = rand() %100 +1;
 	if (attack<= enemigo.getProbAttack()){
-		this->RecibeDano(enemigo.getBaseAttacK());	
+		this->RecibeDano(enemigo.getBaseAttacK());
+                if (enemigo.getVidaActual()== 0){
+                    Saco *mi_saco = this->getMisArtefactos();
+                    int tamano = mi_saco->getTamano();
+                    int elegido = rand()%tamano+1;
+                    Artefacto* premio = mi_saco->getElemento(elegido);
+                    return premio;
+                }else{
+                    return NULL;
+                }
 	}
 }
