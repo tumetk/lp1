@@ -13,10 +13,10 @@ class Game {
         int number;
         Laberinto *laberintoActual;
         Laberinto *listaLaberintos;
-       /* Dibujador *dibujador;
+        Dibujador *dibujador;
         Avatar *jugador ;
         Monstruo *listamonstruos;
-        Artefacto *listaartefactos; */
+        Artefacto *listaartefactos;
     public :
         Game();
         void start();
