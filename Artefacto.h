@@ -9,6 +9,8 @@
 #define	ARTEFACTO_H
 
 class Artefacto{
+private:
+    int tipo;
     public:
        virtual void usar( class Entidad);
 };
