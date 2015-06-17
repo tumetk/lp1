@@ -17,6 +17,8 @@ class Avatar:public Entidad{
 		int totalExpNextLevel;
 		int baseAttack;
     public:
+        Avatar();
+        virtual ~Avatar();
     	void setBaseAttack(int);
     	int  getBaseAttack();
     	void setTotalExpNextLevel(int);
