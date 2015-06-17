@@ -75,7 +75,7 @@ Artefacto* Avatar::interaccion(Monstruo enemigo,char accion){
         if (enemigo.getVidaActual()== 0){
             int exp_gain = enemigo.getExpGain();
             this->setExpActual(exp_gain);
-            Saco *mi_saco = this->getMisArtefactos();
+            Saco *mi_saco = enemigo.getMisArtefactos();
             int tamano = mi_saco->getTamano();
             int elegido = rand()%tamano+1;
             Artefacto* premio = mi_saco->getElemento(elegido);
@@ -91,4 +91,14 @@ Artefacto* Avatar::interaccion(Monstruo enemigo,char accion){
         }
     }
 	
+}
+Avatar::Avatar(){
+	this->expActual=0;
+	this->expNextLevel=100;
+	this->estado=1;
+	this->totalExpNextLevel=100;
+	this->baseAttack= 10;
+}
+Avatar::~Avatar(){
+	delete this;
 }
