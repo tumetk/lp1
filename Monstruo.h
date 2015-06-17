@@ -9,11 +9,11 @@
 #define	MONSTRUO_H
 
 class Monstruo :public Entidad{
-	public:
+	private:
 		int expPrize;
 		int probAttack;
 		int baseAttack;
-    private:
+    public:
         Monstruo();
         virtual ~Monstruo();
         void setExpGain(int);

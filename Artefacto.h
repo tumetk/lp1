@@ -10,7 +10,7 @@
 
 class Artefacto{
     public:
-        void usar( Entidad);
+       virtual void usar( class Entidad);
 };
 
 #endif	/* ARTEFACTO_H */
