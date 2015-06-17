@@ -16,6 +16,8 @@ class Avatar:public Entidad{
 		int estado;
 		int totalExpNextLevel;
 		int baseAttack;
+                class Arma* armaequipada;
+                class Armadura* armaduraequipada;
     public:
         Avatar();
         virtual ~Avatar();
@@ -29,6 +31,12 @@ class Avatar:public Entidad{
     	int  getExpActual();
     	void RecibeDano(int);
     	Artefacto* interaccion(Monstruo,char);
+        void equiparArma(class Arma*);
+        void equiparArmadura(class Armadura*);
+        void setArmadura( class Armadura *);
+        void setArma(class Arma *);
+        Arma* getArma();
+        Armadura* getArmadura();
 
 };
 

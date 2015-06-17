@@ -104,3 +104,27 @@ Avatar::Avatar(){
 Avatar::~Avatar(){
 	delete this;
 }
+void Avatar::equiparArma(class Arma* new_weapon){
+    Saco *saco_actual = this->getMisArtefactos();
+    Arma *old_weapon = this->armaequipada;
+    this->armaequipada = new_weapon;
+    saco_actual->push(old_weapon);
+}
+void Avatar::equiparArmadura(class Armadura* new_armor){
+    Saco *saco_actual = this->getMisArtefactos();
+    Armadura *old_armor = this->armaduraequipada;
+    this->armaduraequipada = new_armor;
+    saco_actual->push(old_armor);
+}
+void Avatar::setArmadura( class Armadura * armor){
+    this->armaduraequipada = armor;
+}
+void Avatar::setArma(class Arma * weapon){
+    this->armaequipada = weapon;
+}
+Arma* Avatar::getArma(){
+    return this->armaequipada;
+}
+Armadura* Avatar::getArmadura(){
+    return this->armaduraequipada;
+}

@@ -52,5 +52,5 @@ char* Arma::getNombre(){
     return this->nombre;
 }
 void usar(class Avatar& avatar){
-    avatar.equipar(this);
+    avatar.equiparArma(this);
 }
