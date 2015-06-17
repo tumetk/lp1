@@ -10,6 +10,7 @@
 
 class Monstruo :public Entidad{
 	private:
+            int tipo;//Tipo de cada mounstruo
 		int expPrize;
 		int probAttack;
 		int baseAttack;
