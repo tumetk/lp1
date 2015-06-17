@@ -8,11 +8,20 @@
 #ifndef LABERINTO_H
 #define	LABERINTO_H
 
+#include "Celda.h"
+#include "Artefacto.h"
+#include "Monstruo.h"
+
 class Laberinto {
 private:
     int M;
     int N;
     char** lab;
+    Celda** celda; 
+    double pctMonstruo;
+    double pctArtefacto;
+    Monstruo* nivelesMonstruo;
+    Artefacto* nivelesArtefacto;
 public:
     Laberinto();
     Laberinto(int,int);
