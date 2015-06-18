@@ -23,7 +23,7 @@
 
 using namespace std;
 Game::Game(){
-    this->dibujador       = new Dibujador(11,11);
+    this->dibujador       = new Dibujador(5,5);
     this->jugador         = NULL;
     this->laberintoActual = NULL;
     
