@@ -7,7 +7,8 @@
 #include "Laberinto.h"
 #ifndef GAME_H
 #define	GAME_H
-
+#include "Dibujador.h"
+#include "Avatar.h"
 class Game {
     private:
         int number;

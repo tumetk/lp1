@@ -12,7 +12,7 @@ class Artefacto{
 private:
     int tipo;
     public:
-       virtual void usar( class Entidad);
+       virtual void usar( class Entidad) = 0 ;
 };
 
 #endif	/* ARTEFACTO_H */

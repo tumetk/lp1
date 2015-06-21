@@ -19,7 +19,7 @@ class Avatar:public Entidad{
                 class Arma* armaequipada;
                 class Armadura* armaduraequipada;
     public:
-        Avatar();
+        Avatar(char *,int,int);
         virtual ~Avatar();
     	void setBaseAttack(int);
     	int  getBaseAttack();

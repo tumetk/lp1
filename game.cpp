@@ -25,15 +25,10 @@ using namespace std;
 Game::Game(){
     this->dibujador       = new Dibujador(5,5);
     this->jugador         = NULL;
-    this->laberintoActual = NULL;
-    
-    
-    
     GestorDeLaberinto gestor(3); //por mientras.
     this->listaLaberintos = gestor.crear();
-    
-    this->listaartefactos = new Artefacto[3];
-    this->listamonstruos  = new Monstruo[3];
+//    this->listaartefactos = new Artefacto; falta la carga de monstruos
+//    this->listamonstruos  = new Monstruo;
     this->number          = 1;
     cout << "tume se la come";
     
@@ -47,11 +42,11 @@ void Game::start(){
     }while(key != '\r');
     int nivelLaberinto = 0;
     int gano = 0;
-    int posX = this->jugador.getPosX(), posY = this->jugador->getPosY();
+    int posX = this->jugador->getPosX(), posY = this->jugador->getPosY();
     while(1){
         this->laberintoActual = this->listaLaberintos[nivelLaberinto].getLab();
-        Celda casilla = this->laberintoActual->getCelda(posX,posY);
-        switch(casilla){            
+        Celda* casilla = this->laberintoActual.getCelda(posX,posY);
+        switch(casilla->getTipo()){            
             case 2:
                 if(nivelLaberinto>0)
                     nivelLaberinto--;                                
@@ -135,7 +130,7 @@ void Game::start(){
         do{
             key = getch();
         }while(key != 27);
-        int posX = this->jugador.getPosX(), posY = this->jugador->getPosY();
+        int posX = this->jugador->getPosX(), posY = this->jugador->getPosY();
     }
 }
 

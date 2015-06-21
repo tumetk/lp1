@@ -7,15 +7,17 @@
 
 #ifndef MONSTRUO_H
 #define	MONSTRUO_H
-
+#include "Entidad.h"
 class Monstruo :public Entidad{
 	private:
             int tipo;//Tipo de cada mounstruo
-		int expPrize;
-		int probAttack;
-		int baseAttack;
+            int expPrize;
+            int probAttack;
+            int baseAttack;
+           
+            
     public:
-        Monstruo();
+        Monstruo(int,int,int);
         virtual ~Monstruo();
         void setExpGain(int);
         int getExpGain();

@@ -19,13 +19,13 @@ class Entidad{
         Saco* misArtefactos;
         int vidaActual;
     public:
-    	Entidad(char *,int,int);
+    	
     	virtual ~Entidad();
     	void setNivel(int);
     	int  getNivel();
     	void setVidaActual(int);
     	int getVidaActual();
-    	
+    	void newBag(int);
     	void setPosX(int);
     	void setPoxY(int);
     	void setMaxVida(int);

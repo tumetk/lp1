@@ -69,15 +69,7 @@ int Entidad::getNivel(){
 	return this->nivel;
 }
 
-Entidad::Entidad(char *nombre, int maxVida, int tipo){
-	this->posX = 0 ;
-	this->posY = 0 ;
-	this->nivel = 1 ;
-	this->nombre = new char[strlen(nombre)+1];
-	strcpy(this->nombre,nombre);
-	this->maxVida = maxVida ;
-	this->misArtefactos = new Saco(tipo);
-}
+
 
 Entidad::~Entidad(){
 	char *nombre = this->nombre;
@@ -99,4 +91,8 @@ int Entidad::getVidaActual (){
 
 Saco* Entidad::getMisArtefactos(){
     return this->misArtefactos;
+}
+
+void Entidad::newBag(int tipo){
+    this->misArtefactos = new Saco(tipo);
 }

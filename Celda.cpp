@@ -22,19 +22,16 @@
 #include "ejemplo.h"
 using namespace std;
 
-void Armadura::setNombre(char* nombre){
-  this->nombre = new char[strlen(nombre)+1];
-  strcpy(this->nombre,nombre);
+
+Celda::Celda(int tipo){
+    this->tipo = tipo;
 }
-void Armadura::usar(class Avatar& avatar){
-    avatar.equiparArmadura(this);
+void Celda::setTipo(int tipo){
+    this->tipo = tipo;
 }
-void Armadura::setDefensa(int defensa){
-    this->defensa = defensa;
+int Celda::getTipo(){
+    return this->tipo;
 }
-int Armadura::getDefensa(){
-    return this->defensa;
-}
-char *Armadura::getNombre(){
-    return this->nombre;
+Celda::~Celda(){
+    delete this;
 }

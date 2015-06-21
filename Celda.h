@@ -11,6 +11,12 @@
 class Celda{
     private:
         int tipo;
+        
+    public:
+        Celda(int);
+        void setTipo(int);
+        int getTipo();
+        virtual ~Celda();
 };
 
 #endif	/* CELDA_H */

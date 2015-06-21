@@ -25,13 +25,13 @@ using namespace std;
 void Monstruo::setExpGain(int exp){
 	this->expPrize = exp;
 }
-int getExpGain(){
+int Monstruo::getExpGain(){
 	return this->expPrize;
 }
-int getProbAttack(){
+int Monstruo::getProbAttack(){
 	return this->probAttack;
 }
-void setProbAttack(int prob){
+void Monstruo::setProbAttack(int prob){
 	this->probAttack = prob;
 }
 Monstruo::Monstruo(int baseAttack,int expPrize,int prob){

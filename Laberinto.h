@@ -17,11 +17,11 @@ private:
     int M;
     int N;
     char** lab;
-    Celda** celda; 
+    Celda* celda[40][40]; 
     double pctMonstruo;
     double pctArtefacto;
-    Monstruo* nivelesMonstruo;
-    Artefacto* nivelesArtefacto;
+    int* nivelesMonstruo;
+    int* nivelesArtefacto;
 public:
     Laberinto();
     Laberinto(int,int);
@@ -35,7 +35,7 @@ public:
     void setM(int M);
     int getM() const;
     Laberinto getLab() const;
-    Celda getCelda() const;
+    Celda* getCelda(int,int) ;
 };
 
 #endif	/* LABERINTO_H */

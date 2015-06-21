@@ -47,7 +47,7 @@ void Saco::setTipo(int tipo){
 }
 
 Saco::~Saco(){
-    Artefacto * lista = this->lista;
+    Artefacto** lista = this->lista;
     delete[] lista;
     delete this;
     
@@ -70,7 +70,7 @@ int Saco::push(Artefacto* artefacto){
         this->tamano += 1;
         return 1 ;
     }else {
-        Artefacto *old_lista = this->lista;
+        Artefacto **old_lista = this->lista;
         this->lista = new Artefacto*[this->capacidad + 10];
         for(int x = 0 ; x< this->capacidad;x++){
             this->lista[x] = old_lista[x];

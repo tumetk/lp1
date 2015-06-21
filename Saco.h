@@ -10,7 +10,7 @@
 
 class Saco{
     private:
-        Artefacto *lista;
+        Artefacto **lista;
         int tipo;
         int tamano;
         int capacidad;

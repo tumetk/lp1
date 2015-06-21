@@ -94,7 +94,13 @@ Artefacto* Avatar::interaccion(Monstruo enemigo,char accion){
     }
 	
 }
-Avatar::Avatar(){
+Avatar::Avatar(char *nombre ,int maxVida,int tipo){
+        this->setPosX(0) ;
+	this->setPoxY(0) ;
+	this->setNivel(1) ;
+	this->setNombre(nombre);
+	this->setMaxVida(maxVida) ;
+	this->newBag(tipo);
 	this->expActual=0;
 	this->expNextLevel=100;
 	this->estado=1;

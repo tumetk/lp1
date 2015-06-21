@@ -51,6 +51,6 @@ int Arma::getDanhoMax(){
 char* Arma::getNombre(){
     return this->nombre;
 }
-void usar(class Avatar& avatar){
+void Arma::usar(class Avatar& avatar){
     avatar.equiparArma(this);
 }

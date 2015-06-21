@@ -22,19 +22,6 @@
 #include "ejemplo.h"
 using namespace std;
 
-void Armadura::setNombre(char* nombre){
-  this->nombre = new char[strlen(nombre)+1];
-  strcpy(this->nombre,nombre);
-}
-void Armadura::usar(class Avatar& avatar){
-    avatar.equiparArmadura(this);
-}
-void Armadura::setDefensa(int defensa){
-    this->defensa = defensa;
-}
-int Armadura::getDefensa(){
-    return this->defensa;
-}
-char *Armadura::getNombre(){
-    return this->nombre;
+void Artefacto::usar(Entidad){
+    
 }

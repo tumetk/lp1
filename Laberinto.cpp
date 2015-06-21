@@ -11,11 +11,11 @@ Laberinto::Laberinto(){
     srand(time(NULL));
     pctMonstruo = (rand()%10)/10;
     pctArtefacto = (rand()%10)/10;
-    Monstruo = new int[10];
-    Artefacto = new int[10];
+    nivelesMonstruo = new int[10];
+    nivelesArtefacto = new int[10];
     for(int i=0; i<10;i++){
-        Monstruo[i] = rand()%11;
-        Artefacto[i] = rand()%11;
+        nivelesMonstruo[i] = rand()%11;
+        nivelesArtefacto[i] = rand()%11;
     }
     lab = NULL;
 }
@@ -23,12 +23,12 @@ Laberinto::Laberinto(){
 Laberinto::Laberinto(int M,int N) {
     setN(N);
     setM(M);
-    lab = new char*[N+1];
-    celda = new int*[N+1];
-    for(int i=0; i<N;i++){
-        lab[i] = new char[M+1]; 
-        celda[i] = new int[M+1];
-    }
+//    lab = new char*[N+1];
+//    celda = new int*[N+1];
+//    for(int i=0; i<N;i++){
+//        lab[i] = new char[M+1]; 
+//        celda[i] = new int[M+1];
+//    }
 }
 
 void Laberinto::setN(int N) {
@@ -61,18 +61,23 @@ Laberinto::~Laberinto() {
 
 void Laberinto::cargarCelda(int fila, int col, char car){
     lab[fila][col] = car;   
+    Celda *new_celda;
     switch(car){
         case ' ':
-            celda[fila][col] = 1; //1 es ADENTRO
+            new_celda=new Celda(1) ;
+            celda[fila][col] =  new_celda; //1 es ADENTRO
             break;
         case '-':
-            celda[fila][col] = 2; //2 es ANTERIOR
+            new_celda=new Celda(2) ;
+            celda[fila][col] = new_celda; //2 es ANTERIOR
             break;
         case '#':
-            celda[fila][col] = 3;//3 es PARED
+            new_celda=new Celda(3) ;
+            celda[fila][col] = new_celda;//3 es PARED
             break;
         case '+':
-            celda[fila][col] = 4; //4 es SIGUIENTE
+            new_celda=new Celda(4) ;
+            celda[fila][col] = new_celda; //4 es SIGUIENTE
             break;
     }
 }
@@ -84,7 +89,7 @@ char Laberinto::mostrarCelda(int fila, int col){
     return aux[fila][col];   
 }
 
-Celda Laberinto::getCelda(int fil, int col) const{
+Celda* Laberinto::getCelda(int fil, int col) {
     return celda[fil][col];
 }
 
