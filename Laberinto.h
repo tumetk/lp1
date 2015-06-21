@@ -35,6 +35,7 @@ public:
     void setM(int M);
     int getM() const;
     Laberinto getLab() const;
+    Celda getCelda() const;
 };
 
 #endif	/* LABERINTO_H */

@@ -84,6 +84,10 @@ char Laberinto::mostrarCelda(int fila, int col){
     return aux[fila][col];   
 }
 
+Celda Laberinto::getCelda(int fil, int col) const{
+    return celda[fil][col];
+}
+
 void Laberinto::printLaberinto(int x, int y){
     for(int i =0 ; i<N; i++){
         for(int j=0; j<M;j++){

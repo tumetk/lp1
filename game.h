@@ -11,7 +11,7 @@
 class Game {
     private:
         int number;
-        Laberinto *laberintoActual;
+        Laberinto laberintoActual;
         Laberinto *listaLaberintos;
         Dibujador *dibujador;
         Avatar *jugador ;
