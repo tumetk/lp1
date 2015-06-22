@@ -48,7 +48,7 @@ int Dibujador::GetA() const {
 void Dibujador::buscarJugador(Laberinto *lab, int &fil, int &col){
     for(int i=fil; i<lab->getN(); i++){
         for(int j=col; j<lab->getM(); j++){
-            if(lab->mostrarCelda(i,j) == '-')
+            if(lab->mostrarCelda(i,j) == '°')
             {
                 fil=i;
                 col=j;

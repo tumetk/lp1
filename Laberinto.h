@@ -22,6 +22,11 @@ private:
     double pctArtefacto;
     int* nivelesMonstruo;
     int* nivelesArtefacto;
+    int inicioX;
+    int inicioY;
+    int finX;
+    int finY;
+    int visitado;
 public:
     Laberinto();
     Laberinto(int,int);
@@ -37,6 +42,14 @@ public:
     Laberinto* getLab() ;
     Celda getCelda(int,int) ;
     void operator=(const Laberinto&);
+    int getInicioX();
+    int getInicioY();
+    int getFinX();
+    int getFinY();
+    void setVisitado(int);
+    int getVisitado();
+    int verificarMovimiento(int,int);
+    int verificarMonstruo(int,int);
 };
 
 #endif	/* LABERINTO_H */

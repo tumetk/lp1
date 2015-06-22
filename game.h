@@ -21,6 +21,15 @@ class Game {
         Artefacto** levantarArtefactos();
         Monstruo** levantarMonstruos();
         Avatar* crearJugador();
+        void historia();
+        int verificar();
+        void imprimirUI();
+        void imprimirLaberinto();
+        void accciones();
+        int verificarFin(int &);
+        
+        void moverPersonaje(int,int);
+        void batalla();
     public :
         Game();
         void start();

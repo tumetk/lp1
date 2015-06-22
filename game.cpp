@@ -95,39 +95,18 @@ Game::Game(){
     cout << "tume se la come";
     
 }
-void Game::start(){    
-    system("cls");
-    this->jugador         = crearJugador();
-    system("cls");
+void Game::historia(){
     printf("La historia comienza con penes luego llega un pene un dia y le dice a otro pene lo siguiente: pene.");
     char key ;
     do{
         key = getch();
     }while(key != '\r');
-    int nivelLaberinto = 0;
-    int gano = 0;
-    int posX = this->jugador->getPosX(), posY = this->jugador->getPosY();
-    while(1){
-        this->laberintoActual = this->listaLaberintos[nivelLaberinto]->getLab();
-        Celda casilla = this->laberintoActual->getCelda(posX,posY);
-        switch(casilla.getTipo()){            
-            case 2:
-                if(nivelLaberinto>0)
-                    nivelLaberinto--;                                
-            case 4:
-                nivelLaberinto++;
-                //if(nivelLaberinto == nivelMAX) 
-                //gano = 1;
-                break;
-        }
-        system("cls");    
-        gotoxy(10,1);
-        cout << "Presiona ESC para regresar";    
-        gotoxy(10,5);        
-        cout << "Laberinto";                
-        this->dibujador->crear(this->laberintoActual);    
-        this->dibujador->imprime(10,8);    
-        gotoxy(10,30);
+}
+void Game::imprimirUI(){
+    system("cls");    
+    gotoxy(10,1);
+    cout << "Presiona ESC para regresar";   
+       gotoxy(10,30);
         cout << "Acciones";    
         gotoxy(41,5);
         cout << "Avatar";
@@ -163,39 +142,99 @@ void Game::start(){
             cout << "=";
         }            
     
-        gotoxy(10,33);    
-        char tecla = getche();    
-        //aqui se escriben las acciones ya sean movimientos o demas los movimientos aun no estan desarrolados 
-        if(tecla == 'A'){        
-            char key ;
-            do{
-                key = getch();
-            }while(key != '\r');
-            gotoxy(10,35);
-            cout << "Atacaste";        
+}
+int Game::verificar(){
+    Laberinto **lista = this->listaLaberintos;
+    
+    for (int indice = 0; indice < CANTIDAD_LABERINTOS;indice++){
+        Laberinto *examinado = lista[indice];
+        if (examinado->getVisitado()==0){
+            return 0 ;
         }
-        else if(tecla == 'B'){              
-            char key ;
-            do{
-                key = getch();
-            }while(key != '\r');
-            gotoxy(10,35);
-            cout << "Te curaste";
-        }
-        else if(tecla == 'C'){        
-            char key ;
-            do{
-                key = getch();
-            }while(key != '\r');
-            gotoxy(10,35);
-            cout << "Te rendiste";
-        }
-        char key ;
-        do{
-            key = getch();
-        }while(key != 27);
-        int posX = this->jugador->getPosX(), posY = this->jugador->getPosY();
     }
+    return 1;
+}
+void Game::imprimirLaberinto(){
+    gotoxy(10,5);        
+    cout << "Laberinto";                
+    this->dibujador->crear(this->laberintoActual);    
+    this->dibujador->imprime(10,8); 
+}
+void Game::batalla(){
+    
+}
+void Game::accciones(){
+    char tecla = getch();
+    gotoxy(10,33);    
+    int posx,posy;
+    posx = this->jugador->getPosX();
+    posy = this->jugador->getPosY();
+    int new_posx =posx;
+    int new_posy=posy;
+    if (tecla == 'a'){
+        new_posx--;
+    }else if (tecla =='s'){
+        new_posy ++;
+    }else if (tecla =='d'){
+        new_posx++;
+    }else if (tecla =='w'){
+        new_posy--;
+    }else if(tecla =='1'){
+        cout<<"Ir a Artefactos?(y/n)"<<endl;
+    }else if (tecla =='2'){
+        cout<<"Rendirse?(y/n)"<<endl;
+    }else {
+        cout<<"Comando Invalido"<<endl;
+    }
+    if (this->laberintoActual->verificarMovimiento(posx,posy)){
+           this->laberintoActual->cargarCelda(posx,posy,' ');
+           if(this->laberintoActual->verificarMonstruo(new_posx,new_posy)){
+               this->batalla();
+           }
+           this->jugador->move(new_posx,new_posy);
+           this->laberintoActual->cargarCelda(new_posx,new_posy,'j');
+           
+       }else{
+           cout<<"Movimiento no valido"<<endl;
+    } 
+
+}
+int Game::verificarFin(int &nivelLaberinto){
+    Avatar *jugador_actual = this->jugador;
+    int posx = jugador_actual->getPosX();
+    int posy = jugador_actual->getPosY();
+    Celda celda_actual = this->laberintoActual->getCelda(posx,posy);
+    if (celda_actual.getTipo()==4){
+        this->laberintoActual->setVisitado(1);
+        if(this->verificar()){
+            return 1;
+        }else {
+            nivelLaberinto++;
+            this->laberintoActual = this->listaLaberintos[nivelLaberinto]->getLab();
+            this->jugador->move(this->laberintoActual->getInicioX(),this->laberintoActual->getInicioY());
+            return 0;
+        }
+    }else{
+        return 0;
+    }
+}
+void Game::start(){    
+    system("cls");
+    this->jugador = crearJugador();
+    system("cls");
+    
+    int nivelLaberinto = 0;
+    int gano = 0;
+    int posX = this->jugador->getPosX(), posY = this->jugador->getPosY();
+    this->laberintoActual = this->listaLaberintos[nivelLaberinto]->getLab();
+    this->jugador->move(this->laberintoActual->getInicioX(),this->laberintoActual->getInicioY());
+    
+    do{              
+        this->imprimirUI();
+        this->imprimirLaberinto();     
+        this->accciones();
+        gano = this->verificarFin(nivelLaberinto);        
+    }while (gano == 0);
 }
 
 Game::~Game(){

@@ -62,11 +62,12 @@ void Laberinto::cargarCelda(int fila, int col, char car){
     Celda *new_celda ;
     switch(car){
         case ' ':
-            new_celda=new Celda(1) ;
+            
             new_celda_row[col].setTipo(1); //1 es ADENTRO
             break;
         case '-':
-            
+            this->inicioX = col ;
+            this->inicioY = fila;
             new_celda_row[col].setTipo(2); //2 es ANTERIOR
             break;
         case '#':
@@ -74,8 +75,15 @@ void Laberinto::cargarCelda(int fila, int col, char car){
             new_celda_row[col].setTipo(3);//3 es PARED
             break;
         case '+':
-            
+            this->finX = col;
+            this->finY = fila;
             new_celda_row[col].setTipo(4);//4 es SIGUIENTE
+            break;
+        case 'j':
+            new_celda_row[col].setTipo(5);//jugador
+            break;
+        case 'm':
+            new_celda_row[col].setTipo(6);//monstruo
             break;
     }
 }
@@ -93,7 +101,12 @@ char Laberinto::mostrarCelda(int fila, int col){
         returned = '#';
     }else if (tipo == 4){
         returned = '+';
+    }else if(tipo ==5){
+        returned ='°';
+    }else if(tipo ==6){
+        returned =' ';
     }
+    
     return returned;   
 }
 
@@ -114,5 +127,29 @@ void Laberinto::printLaberinto(int x, int y){
 }
 
 Laberinto::Laberinto(){
+    
+}
+int Laberinto::getInicioX(){
+    return this->inicioX;
+}
+int Laberinto::getInicioY(){
+    return this->inicioY;
+}
+int Laberinto::getFinX(){
+    return this->finX   ;
+}
+int Laberinto::getFinY(){
+    return this->finY   ;
+}
+void Laberinto::setVisitado(int estado){
+    this->visitado = estado;
+}
+int Laberinto::getVisitado(){
+    return this->visitado;
+}
+int Laberinto::verificarMovimiento(int,int){
+    
+}
+int Laberinto::verificarMonstruo(int,int){
     
 }
