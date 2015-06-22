@@ -163,6 +163,9 @@ void Game::imprimirLaberinto(){
 void Game::batalla(){
     
 }
+void Game::recoger(){
+    
+}
 void Game::accciones(){
     char tecla = getch();
     gotoxy(10,33);    
@@ -186,16 +189,20 @@ void Game::accciones(){
     }else {
         cout<<"Comando Invalido"<<endl;
     }
-    if (this->laberintoActual->verificarMovimiento(posx,posy)){
-           this->laberintoActual->cargarCelda(posx,posy,' ');
+    if (this->laberintoActual->verificarMovimiento(new_posx,new_posy)){
+        if(this->laberintoActual->verificarPared(new_posx,new_posy)){
+           this->laberintoActual->cargarCelda(posx,posy,' '); 
            if(this->laberintoActual->verificarMonstruo(new_posx,new_posy)){
-               this->batalla();
+                this->batalla();
+           }
+           if(this->laberintoActual->verificarArtefacto(new_posx,new_posy)){
+               this->recoger();
            }
            this->jugador->move(new_posx,new_posy);
            this->laberintoActual->cargarCelda(new_posx,new_posy,'j');
-           
-       }else{
-           cout<<"Movimiento no valido"<<endl;
+        }                            
+    }else{
+        cout<<"Movimiento no valido"<<endl;
     } 
 
 }

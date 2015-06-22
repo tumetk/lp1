@@ -150,6 +150,22 @@ int Laberinto::getVisitado(){
 int Laberinto::verificarMovimiento(int,int){
     
 }
-int Laberinto::verificarMonstruo(int,int){
+int Laberinto::verificarMonstruo(int new_posx,int new_posy){
+    int max_m = this->M;
+    int max_n = this->N;
+    
+    if (new_posx >max_m  || new_posy < 0){
+        return 0 ;
+    }
+    if (new_posy > max_n || new_posy <0){
+        return 0;
+    }
+    return 1 ;
+}
+
+int Laberinto::verificarPared(int posx,int posy){
+    
+}
+int Laberinto::verificarArtefacto(int posx,int posy){
     
 }

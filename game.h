@@ -27,7 +27,7 @@ class Game {
         void imprimirLaberinto();
         void accciones();
         int verificarFin(int &);
-        
+        void recoger();
         void moverPersonaje(int,int);
         void batalla();
     public :

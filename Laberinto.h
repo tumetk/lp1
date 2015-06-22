@@ -50,6 +50,8 @@ public:
     int getVisitado();
     int verificarMovimiento(int,int);
     int verificarMonstruo(int,int);
+    int verificarPared(int,int);
+    int verificarArtefacto(int,int);
 };
 
 #endif	/* LABERINTO_H */
