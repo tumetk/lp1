@@ -7,14 +7,15 @@
 
 #ifndef POCIONCURACION_H
 #define	POCIONCURACION_H
-
+#include "Avatar.h"
 class PocionCuracion:public Artefacto{
     private:
         int puntosVida;
     public:
+        PocionCuracion(char *,int);
         void setPuntosVida(int );
         int getPuntosVida();
-        void usar(class Avatar&);
+        void usar( Avatar&);
 };
 
 #endif	/* POCIONCURACION_H */

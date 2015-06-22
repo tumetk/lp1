@@ -22,6 +22,16 @@
 #include "ejemplo.h"
 using namespace std;
 
-void Artefacto::usar(Entidad){
+void Artefacto::usar(Avatar&){
     
+}
+
+void Artefacto::setNombre(char*nombre){
+     char *new_nombre = new char[strlen(nombre)+1];
+    strcpy(new_nombre,nombre);
+    this->nombre = new_nombre;
+}
+
+char *Artefacto::getNombre(){
+    return this->nombre;
 }

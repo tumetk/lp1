@@ -10,14 +10,15 @@
 
 class Armadura: public Artefacto{
     private:
-        char * nombre;
+        
         int defensa;
     public:
-        void setNombre(char*);
+        Armadura(char *,int);
+        
         void usar(class Avatar&);
         void setDefensa(int);
         int getDefensa();
-        char *getNombre();
+        
 };
 
 #endif	/* ARMADURA_H */

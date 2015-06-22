@@ -12,15 +12,15 @@ class Arma:public Artefacto{
     private:
         int danhoMin;
         int danhoMax;
-        char* nombre;
+        
     public:
         Arma(int,int,char*);
         void setDanhoMin(int);
         void setDanhoMax(int);
-        void setNombre(char*);
+        
         int getDanhoMin();
         int getDanhoMax();
-        char* getNombre();
+        
         void usar(class Avatar&);
             
 };

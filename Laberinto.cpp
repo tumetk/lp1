@@ -7,7 +7,9 @@
 
 using namespace std;
 
-Laberinto::Laberinto(){
+
+
+Laberinto::Laberinto(int M,int N) {
     srand(time(NULL));
     pctMonstruo = (rand()%10)/10;
     pctArtefacto = (rand()%10)/10;
@@ -18,17 +20,15 @@ Laberinto::Laberinto(){
         nivelesArtefacto[i] = rand()%11;
     }
     lab = NULL;
-}
-
-Laberinto::Laberinto(int M,int N) {
     setN(N);
     setM(M);
-//    lab = new char*[N+1];
-//    celda = new int*[N+1];
-//    for(int i=0; i<N;i++){
-//        lab[i] = new char[M+1]; 
-//        celda[i] = new int[M+1];
-//    }
+    this->celda = new Celda*[N];
+    
+    celda = new Celda*[N+1];
+    for(int i=0; i<N;i++){
+        
+        celda[i] = new Celda[M+1];
+    }
 }
 
 void Laberinto::setN(int N) {
@@ -47,50 +47,60 @@ int Laberinto::getM() const {
     return M;
 }
 
-Laberinto Laberinto::getLab() const {
-    return *this;
+Laberinto* Laberinto::getLab()  {
+    return this;
 }
 
-Laberinto::Laberinto(const Laberinto& orig) {
-    *this = orig;
-}
 
 Laberinto::~Laberinto() {
     //delete[] lab; por mientras.
 }
 
 void Laberinto::cargarCelda(int fila, int col, char car){
-    lab[fila][col] = car;   
-    Celda *new_celda;
+    
+    Celda *new_celda_row = this->celda[fila];
+    Celda *new_celda ;
     switch(car){
         case ' ':
             new_celda=new Celda(1) ;
-            celda[fila][col] =  new_celda; //1 es ADENTRO
+            new_celda_row[col].setTipo(1); //1 es ADENTRO
             break;
         case '-':
-            new_celda=new Celda(2) ;
-            celda[fila][col] = new_celda; //2 es ANTERIOR
+            
+            new_celda_row[col].setTipo(2); //2 es ANTERIOR
             break;
         case '#':
-            new_celda=new Celda(3) ;
-            celda[fila][col] = new_celda;//3 es PARED
+            
+            new_celda_row[col].setTipo(3);//3 es PARED
             break;
         case '+':
-            new_celda=new Celda(4) ;
-            celda[fila][col] = new_celda; //4 es SIGUIENTE
+            
+            new_celda_row[col].setTipo(4);//4 es SIGUIENTE
             break;
     }
 }
 
 char Laberinto::mostrarCelda(int fila, int col){    
-    char **aux = new char *[fila+1];
-    aux[fila] = new char [col+1];
-    aux[fila][col] = lab[fila][col];
-    return aux[fila][col];   
+    
+    Celda celda = this->getCelda(fila,col);
+    int tipo  = celda.getTipo();
+    char returned ;
+    if (tipo ==1){
+        returned = ' ';
+    }else if (tipo == 2){
+        returned = '-';
+    }else if (tipo == 3){
+        returned = '#';
+    }else if (tipo == 4){
+        returned = '+';
+    }
+    return returned;   
 }
 
-Celda* Laberinto::getCelda(int fil, int col) {
-    return celda[fil][col];
+Celda Laberinto::getCelda(int fil, int col) {
+    Celda *row = this->celda[fil];
+    return row[col];
+            
 }
 
 void Laberinto::printLaberinto(int x, int y){
@@ -101,4 +111,8 @@ void Laberinto::printLaberinto(int x, int y){
         }
         cout << endl;
     }
+}
+
+Laberinto::Laberinto(){
+    
 }

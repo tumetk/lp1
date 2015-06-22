@@ -11,8 +11,11 @@
 class Artefacto{
 private:
     int tipo;
+    char* nombre;
     public:
-       virtual void usar( class Entidad) = 0 ;
+       virtual void usar( class Avatar&) = 0 ;
+       void setNombre(char *);
+       char * getNombre();
 };
 
 #endif	/* ARTEFACTO_H */

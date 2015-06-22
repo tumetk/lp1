@@ -1,1 +1,10 @@
-guanira 100 10
+guanira0 100 10 70 2 
+guanira1 100 10 70 2
+guanira2 100 10 70 2
+guanira3 100 10 70 2
+guanira4 100 10 70 2
+guanira5 100 10 70 2
+guanira6 100 10 70 2
+guanira7 100 10 70 2
+guanira8 100 10 70 2
+guanira9 100 10 70 2

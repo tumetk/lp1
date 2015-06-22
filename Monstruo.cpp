@@ -21,7 +21,16 @@
 #include "Saco.h"
 #include "ejemplo.h"
 using namespace std;
-
+Monstruo::Monstruo(char*nombre,int vida,int attack,int probattack,int expgain){
+    this->baseAttack = attack;
+    this->expPrize = expgain;
+    this->probAttack = probattack;
+    this->setNombre(nombre);
+    this->setMaxVida(vida);
+    this->setVidaActual(vida);
+    this->newBag(5);
+    
+}
 void Monstruo::setExpGain(int exp){
 	this->expPrize = exp;
 }
@@ -34,11 +43,7 @@ int Monstruo::getProbAttack(){
 void Monstruo::setProbAttack(int prob){
 	this->probAttack = prob;
 }
-Monstruo::Monstruo(int baseAttack,int expPrize,int prob){
-	this->baseAttack= baseAttack;
-	this->expPrize= expPrize;
-	this->probAttack = prob;
-}
+
 Monstruo::~Monstruo(){
 	delete this;
 }

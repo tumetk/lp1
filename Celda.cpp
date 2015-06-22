@@ -22,7 +22,9 @@
 #include "ejemplo.h"
 using namespace std;
 
-
+Celda::Celda(){
+    this->tipo = -1;
+}
 Celda::Celda(int tipo){
     this->tipo = tipo;
 }
@@ -33,5 +35,5 @@ int Celda::getTipo(){
     return this->tipo;
 }
 Celda::~Celda(){
-    delete this;
+    
 }

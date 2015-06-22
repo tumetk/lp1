@@ -22,10 +22,7 @@
 #include "ejemplo.h"
 using namespace std;
 
-void Armadura::setNombre(char* nombre){
-  this->nombre = new char[strlen(nombre)+1];
-  strcpy(this->nombre,nombre);
-}
+
 void Armadura::usar(class Avatar& avatar){
     avatar.equiparArmadura(this);
 }
@@ -35,6 +32,8 @@ void Armadura::setDefensa(int defensa){
 int Armadura::getDefensa(){
     return this->defensa;
 }
-char *Armadura::getNombre(){
-    return this->nombre;
+Armadura::Armadura(char*nombre, int cantidad){
+    this->defensa = cantidad;
+    this->setNombre(nombre);
+            
 }

@@ -12,12 +12,15 @@
 class Game {
     private:
         int number;
-        Laberinto laberintoActual;
-        Laberinto *listaLaberintos;
+        Laberinto* laberintoActual;
+        Laberinto **listaLaberintos;
         Dibujador *dibujador;
         Avatar *jugador ;
-        Monstruo *listamonstruos;
-        Artefacto *listaartefactos;
+        Monstruo **listamonstruos;
+        Artefacto **listaartefactos;
+        Artefacto** levantarArtefactos();
+        Monstruo** levantarMonstruos();
+        Avatar* crearJugador();
     public :
         Game();
         void start();

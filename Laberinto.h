@@ -17,7 +17,7 @@ private:
     int M;
     int N;
     char** lab;
-    Celda* celda[40][40]; 
+    Celda** celda; 
     double pctMonstruo;
     double pctArtefacto;
     int* nivelesMonstruo;
@@ -25,7 +25,7 @@ private:
 public:
     Laberinto();
     Laberinto(int,int);
-    Laberinto(const Laberinto& orig);
+    
     virtual ~Laberinto();
     void cargarCelda(int,int,char);
     char mostrarCelda(int,int);
@@ -34,8 +34,9 @@ public:
     int getN() const;
     void setM(int M);
     int getM() const;
-    Laberinto getLab() const;
-    Celda* getCelda(int,int) ;
+    Laberinto* getLab() ;
+    Celda getCelda(int,int) ;
+    void operator=(const Laberinto&);
 };
 
 #endif	/* LABERINTO_H */

@@ -16,7 +16,7 @@ public:
     GestorDeLaberinto(int);
     GestorDeLaberinto(const GestorDeLaberinto& orig);
     virtual ~GestorDeLaberinto();
-    Laberinto* crear();
+    Laberinto** crear();
     void setNumLab(int numLab);
     int getNumLab() const;
 };

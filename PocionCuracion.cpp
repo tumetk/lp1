@@ -22,6 +22,10 @@
 #include "ejemplo.h"
 using namespace std;
 
+PocionCuracion::PocionCuracion(char* nombre, int cantidad){
+    this->puntosVida = cantidad;
+    this->setNombre(nombre);
+}
 void PocionCuracion::setPuntosVida(int vida){
     this->puntosVida = vida;
 }

@@ -13,6 +13,7 @@ class Celda{
         int tipo;
         
     public:
+        Celda();
         Celda(int);
         void setTipo(int);
         int getTipo();

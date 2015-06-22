@@ -25,9 +25,8 @@ using namespace std;
 Arma::Arma(int danhomin,int danhomax,char* nombre){
     this->danhoMax = danhomax;
     this->danhoMin = danhomin;
-    char *new_nombre = new char[strlen(nombre)+1];
-    strcpy(new_nombre,nombre);
-    this->nombre = new_nombre;
+    
+    this->setNombre(nombre);
 }
 void Arma::setDanhoMin(int danho){
     this->danhoMin = danho;
@@ -35,22 +34,14 @@ void Arma::setDanhoMin(int danho){
 void Arma::setDanhoMax(int danho){
     this->danhoMax = danho;
 }
-void Arma::setNombre(char* nombre){
-    
-    char *new_nombre = new char[strlen(nombre)+1];
-    strcpy(new_nombre,nombre);
-    this->nombre = new_nombre;
-    
-}
+
 int Arma::getDanhoMin(){
     return this->danhoMin;
 }
 int Arma::getDanhoMax(){
     return this->danhoMax;
 }
-char* Arma::getNombre(){
-    return this->nombre;
-}
+
 void Arma::usar(class Avatar& avatar){
     avatar.equiparArma(this);
 }

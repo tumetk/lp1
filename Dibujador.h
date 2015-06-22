@@ -23,8 +23,8 @@ public:
     int GetB() const;
     void SetA(int);
     int GetA() const;
-    void buscarJugador(Laberinto,int &,int &);
-    void crear(Laberinto);   
+    void buscarJugador(Laberinto*,int &,int &);
+    void crear(Laberinto*);   
     void imprime(int,int);
 };
 

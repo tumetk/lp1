@@ -16,7 +16,7 @@ GestorDeLaberinto::GestorDeLaberinto(const GestorDeLaberinto& orig) {
 GestorDeLaberinto::~GestorDeLaberinto() {
 }
 
-Laberinto* GestorDeLaberinto::crear(){
+Laberinto** GestorDeLaberinto::crear(){
     //Como usar gestor laberinto
 //int main(int argc, char** argv) {
 //    
@@ -47,14 +47,14 @@ Laberinto* GestorDeLaberinto::crear(){
     int M,N;
     char car;
     char linea[100];
-    Laberinto* laberintos = new Laberinto[numLab];
+    Laberinto** laberintos = new Laberinto*[numLab];
     int numL = 0;
     int numCar = 0;
     inputFile >> M;
     inputFile >> N;
     inputFile.get();
     while(!inputFile.eof()){
-        Laberinto laberinto(M,N);
+        Laberinto *new_laberinto = new Laberinto(M,N);
 //        for(int i=0; i<N ; i++)
 //            for(int j=0;j<N;j++){
 //                car = inputFile.get();
@@ -64,12 +64,12 @@ Laberinto* GestorDeLaberinto::crear(){
         for(int i=0; i<N ;i++){
             inputFile.getline(linea,100);
             for(int j=0;j<M;j++)
-                laberinto.cargarCelda(i,j,linea[j]);
+                new_laberinto->cargarCelda(i,j,linea[j]);
         }
         //laberinto.printLaberinto();
         cout << endl<<endl;
-        laberintos[numL++] = laberinto;
-        break; //por mientras.
+        laberintos[numL++] = new_laberinto;
+        
         inputFile >> M;
         inputFile >> N;
         inputFile.get();
