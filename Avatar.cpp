@@ -67,7 +67,7 @@ int  Avatar::getBaseAttack(){
 
 
 
-Artefacto* Avatar::interaccion(Monstruo enemigo,char accion){
+Artefacto* Avatar::interaccion(Monstruo& enemigo,char accion){
 
     int attack = rand() %100 +1;
     if (accion == 'A'){

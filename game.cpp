@@ -161,10 +161,74 @@ void Game::imprimirLaberinto(){
     this->dibujador->imprime(10,8); 
 }
 void Game::batalla(){
+    int fin = 0 ;
+    Monstruo encontrado = this->laberintoActual->getMonstruoByPos(posx,posy);
+    char accion ; 
+   
+    do{
+        this->imprimirLucha(encontrado);
+        this->imprimirListaObjetos(1);
+        acccion = this->getAccion(encontrado.getNombre());
+        if (accion == 'A'){
+            this->jugador->interaccion(monstruo,accion)
+        }else if(accion =='E'){
+            this->usarObjetos(encontrado);
+        }
+
+        this->jugador->interaccion(monstruo,'D');
+
+    }while (fin == 0);
+
+}
+void Game::usarObjetos(Monstruo encontrado){
+    this->imprimirLucha(encontrado);
+    int opcion = 0 ;
+    opcion =this->imprimirListaObjetos();
+    this->imprimirUI();
+    this->imprimirLaberinto();
+
+    do{
+        cin>>opcion ;
+        if (opcion >this->jugador->saco->tamano || opcion<=0){
+            opcion = 0 ;
+        }
+    }while(opcion == 0);
+}
+
+void Game::imprimirLucha(Monstruo encontrado){
+    gotoxy(30,30);
+    cout<<this->jugador->getNombre()<<'\t'<<encontrado.getNombre()<<endl;
+    gotoxy(30,32);
+    cout<<this->jugador->getVidaActual<<'\t'<<encontrado.getVidaActual()<<endl;
+}
+char Game::getAccion(char *nombre){
+     gotoxy(10,33);
+     
+    this->imprimirUI();
+    this->imprimirLaberinto();  
+    cout<<"Encontraste a "<<nombre<<"empiezan las luchas"<<endl;
+    cout<<"Ingresa  comandos:"<<endl;
+    gotoxy(10,38);
+    int accion = 0 ;
+    char comando ;
+    do{
+        cin>>comando;
+        if (comando == 'A'){
+            accion = 1 ;
+        }else if(comando =='E'{
+            accion = 1 ;
+        }else{
+            cout<<"Opcion Invalida"<<endl;
+        }
+    }while(accion == 0);
+    
     
 }
-void Game::recoger(){
-    
+void Game::recoger(int posx,int posy){
+    Artefacto * elegido  = this->laberintoActual->getArtefactoByPos(posx,posy);
+    this->jugador->agregarArtefacto(elegido);
+    gotoxy(10,33);
+    cout<<"Recogiste "<<elegido->getNombre()<<endl;
 }
 void Game::accciones(){
     char tecla = getch();
@@ -192,12 +256,6 @@ void Game::accciones(){
     if (this->laberintoActual->verificarMovimiento(new_posx,new_posy)){
         if(this->laberintoActual->verificarPared(new_posx,new_posy)){
            this->laberintoActual->cargarCelda(posx,posy,' '); 
-           if(this->laberintoActual->verificarMonstruo(new_posx,new_posy)){
-                this->batalla();
-           }
-           if(this->laberintoActual->verificarArtefacto(new_posx,new_posy)){
-               this->recoger();
-           }
            this->jugador->move(new_posx,new_posy);
            this->laberintoActual->cargarCelda(new_posx,new_posy,'j');
         }                            
@@ -205,6 +263,16 @@ void Game::accciones(){
         cout<<"Movimiento no valido"<<endl;
     } 
 
+}
+void Game::verificarCelda(){
+    int posx = this->jugador->getPosX();
+    int posy = this->jugador->getPosY();
+    if(this->laberintoActual->verificarMonstruo(posx,posy)){
+        this->batalla(posx,posy);
+    }
+    if(this->laberintoActual->verificarArtefacto(posx,posy)){
+       this->recoger(posx,posx);
+    }
 }
 int Game::verificarFin(int &nivelLaberinto){
     Avatar *jugador_actual = this->jugador;

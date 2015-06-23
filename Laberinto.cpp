@@ -85,6 +85,9 @@ void Laberinto::cargarCelda(int fila, int col, char car){
         case 'm':
             new_celda_row[col].setTipo(6);//monstruo
             break;
+        case 'a' :
+            new_celda_row[col].setTipo(7);// artefacto
+            break
     }
 }
 
@@ -101,9 +104,9 @@ char Laberinto::mostrarCelda(int fila, int col){
         returned = '#';
     }else if (tipo == 4){
         returned = '+';
-    }else if(tipo ==5){
+    }else if(tipo ==5){ // jugardor tipo 5
         returned ='°';
-    }else if(tipo ==6){
+    }else if(tipo ==6 || tipo ==7){ // artefacto tipo 7 y monstruo tipo 6
         returned =' ';
     }
     
@@ -148,9 +151,6 @@ int Laberinto::getVisitado(){
     return this->visitado;
 }
 int Laberinto::verificarMovimiento(int,int){
-    
-}
-int Laberinto::verificarMonstruo(int new_posx,int new_posy){
     int max_m = this->M;
     int max_n = this->N;
     
@@ -162,10 +162,28 @@ int Laberinto::verificarMonstruo(int new_posx,int new_posy){
     }
     return 1 ;
 }
+int Laberinto::verificarMonstruo(int new_posx,int new_posy){
+    Celda new_celda = this->getCelda(new_posx,new_posy);
+    if (new_celda.getTipo()==6){
+        return 1;
+    }else{
+        return 0;
+    }
+}
 
 int Laberinto::verificarPared(int posx,int posy){
-    
+    Celda new_celda = this->getCelda(new_posx,new_posy);
+    if (new_celda.getTipo()==3){
+        return 1;
+    }else{
+        return 0;
+    }
 }
 int Laberinto::verificarArtefacto(int posx,int posy){
-    
+    Celda new_celda = this->getCelda(new_posx,new_posy);
+    if (new_celda.getTipo()==7){
+        return 1;
+    }else{
+        return 0;
+    }
 }
