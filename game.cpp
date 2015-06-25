@@ -304,8 +304,9 @@ void Game::start(){
     this->laberintoActual = this->listaLaberintos[nivelLaberinto]->getLab();
     this->jugador->move(this->laberintoActual->getInicioX(),this->laberintoActual->getInicioY());
     this->laberintoActual->cargarCelda(this->laberintoActual->getInicioY(),this->laberintoActual->getInicioX(),'X');
+    this->imprimirUI();
     do{              
-        this->imprimirUI();
+        
         this->imprimirLaberinto();     
         this->accciones();
         gano = this->verificarFin(nivelLaberinto);        
@@ -352,15 +353,20 @@ int Game::imprimirListaObjetos(int opcion){
         
     }
     int opcionElegida = 0 ;
-    do{
+    if (cantidad == 0){
         gotoxy(50,10);
-        cout<<"Eliga objeto a usar"<<endl;
-        gotoxy(52,10);
-        cin>>opcionElegida;
-        if (opcionElegida>listaObjetos->getTamano() || opcionElegida<= 0){
-            opcionElegida = 0 ;
-        }
-    }while(opcionElegida == 0);
+        cout<<"No tienes objetos en tu saco "<<endl; 
+    }else{
+        do{
+            gotoxy(50,10);
+            cout<<"Eliga objeto a usar"<<endl;
+            gotoxy(52,10);
+            cin>>opcionElegida;
+            if (opcionElegida>listaObjetos->getTamano() || opcionElegida<= 0){
+                opcionElegida = 0 ;
+            }
+        }while(opcionElegida == 0);
+    }
 }
 
 Monstruo* Game::getMonstruobypos(int indice){
