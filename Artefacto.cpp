@@ -35,3 +35,9 @@ void Artefacto::setNombre(char*nombre){
 char *Artefacto::getNombre(){
     return this->nombre;
 }
+Artefacto::~Artefacto(){
+	char *nombre_destr = this->nombre;
+	int tipo_destr = this->tipo;
+	delete []nombre_destr;
+	delete tipo_destr;
+}

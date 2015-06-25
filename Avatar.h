@@ -16,11 +16,11 @@ class Avatar:public Entidad{
 		int estado;
 		int totalExpNextLevel;
 		int baseAttack;
-                class Arma* armaequipada;
-                class Armadura* armaduraequipada;
+        class Arma* armaequipada;
+        class Armadura* armaduraequipada;
     public:
         Avatar(char *,int,int);
-        virtual ~Avatar();
+         ~Avatar();
     	void setBaseAttack(int);
     	int  getBaseAttack();
     	void setTotalExpNextLevel(int);

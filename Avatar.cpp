@@ -108,7 +108,20 @@ Avatar::Avatar(char *nombre ,int maxVida,int tipo){
 	this->baseAttack= 10;
 }
 Avatar::~Avatar(){
-	delete this;
+	int expActual_destr= this->expActual;
+	int expNextLevel_destr= this->expNextLevel;
+	int estado_destr= this->estado_destr;
+	int totalExpNextLevel_destr=this->totalExpNextLevel;
+	int baseAttack_destr=this->baseAttack;
+    Arma* armaequipada_destr= this->armaequipada;
+    Armadura* armaduraequipada_destr=this->armaduraequipada;
+    delete expActual_destr;
+    delete expNextLevel_destr;
+    delete estado_destr;
+    delete totalExpNextLevel_destr;
+    delete baseAttack_destr;
+    delete armaduraequipada_destr;
+    delete armaequipada_destr;
 }
 void Avatar::equiparArma(class Arma* new_weapon){
     Saco *saco_actual = this->getMisArtefactos();

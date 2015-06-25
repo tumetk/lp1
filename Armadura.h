@@ -18,6 +18,7 @@ class Armadura: public Artefacto{
         void usar(class Avatar&);
         void setDefensa(int);
         int getDefensa();
+        ~Armadura();
         
 };
 

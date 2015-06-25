@@ -45,7 +45,15 @@ void Monstruo::setProbAttack(int prob){
 }
 
 Monstruo::~Monstruo(){
-	delete this;
+	int tipo_destr = this->tipo;
+    int expPrize_destr =this->expPrize;
+    int probAttack_destr = this->probAttack;
+    int baseAttack_destr = this->baseAttack;
+    delete tipo_destr;
+    delete expPrize_destr;
+    delete probAttack_destr;
+    delete baseAttack_destr;
+    
 }
 void Monstruo::setBaseAttack(int attack){
 	this->baseAttack = attack;

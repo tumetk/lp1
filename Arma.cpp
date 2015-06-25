@@ -45,3 +45,9 @@ int Arma::getDanhoMax(){
 void Arma::usar(class Avatar& avatar){
     avatar.equiparArma(this);
 }
+Arma::~Arma(){
+	int min_destr = this->danhoMin;
+	int max_destr = this->danhoMax;
+	delete min_destr;
+	delete max_destr;
+}

@@ -41,3 +41,7 @@ void PocionCuracion::usar(class Avatar& avatar){
         avatar.setVidaActual(nueva_vida);
     }
 }
+
+PocionCuracion::~PocionCuracion(){
+    delete this->puntosVida;
+}

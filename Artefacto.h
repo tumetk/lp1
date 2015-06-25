@@ -16,6 +16,7 @@ private:
        virtual void usar( class Avatar&) = 0 ;
        void setNombre(char *);
        char * getNombre();
+       virtual ~Artefacto();
 };
 
 #endif	/* ARTEFACTO_H */

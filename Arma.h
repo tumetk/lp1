@@ -22,6 +22,7 @@ class Arma:public Artefacto{
         int getDanhoMax();
         
         void usar(class Avatar&);
+        ~Arma();
             
 };
 

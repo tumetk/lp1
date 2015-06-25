@@ -47,9 +47,18 @@ void Saco::setTipo(int tipo){
 }
 
 Saco::~Saco(){
-    Artefacto** lista = this->lista;
-    delete[] lista;
-    delete this;
+     
+    int tipo_destr = this->tipo;
+    int tamano_destr = this->tamano;
+    int capacidad_destr = this->capacidad;
+    Artefacto** lista_destr = this->lista;
+    for (int indice = 0 ; lista_destr[indice];indice++){
+        delete[] lista_destr[indice];
+    }
+    delete[] lista_destr;
+    delete tipo_destr;
+    delete tamano_destr;
+    delete capacidad_destr;
     
 }
 void Saco::setTamano(int tamano){
@@ -76,6 +85,7 @@ int Saco::push(Artefacto* artefacto){
             this->lista[x] = old_lista[x];
         }
         this->lista[tamano] = artefacto;
+        this->lista[tamano+1 ] = NULL;
         this->tamano += 1;
         return 1;
     }

@@ -26,6 +26,7 @@ class Saco{
         int getCapacidad();
         void setCapacidad(int);
         int push(Artefacto *);
+        virtual ~Saco();
 };
 
 

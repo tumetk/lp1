@@ -21,12 +21,34 @@ Dibujador::Dibujador(int a, int b){
     for(int i=0; i<2*A + 1;i++){
         dib[i] = new char [2*B + 1]; 
     }
+
+    
 }
 
 Dibujador::Dibujador(const Dibujador& orig) {
 }
 
 Dibujador::~Dibujador() {
+
+    dib = new char*[2*A + 1];
+    for(int i=0; i<2*A + 1;i++){
+        dib[i] = new char [2*B + 1]; 
+    }
+
+    int A_destr= this->A;
+    int B_destr = this->B;
+    char **dib_destr = this->dib;
+    char *fila_destr;
+    for(int i = 0 ;i<2*A+1;i++){
+        fila_destr = dib_destr[i];
+        delete[] fila_destr;
+    }
+    delete[] dib_destr;
+    delete A_destr;
+    delete B_destr;
+
+
+
 }
 
 void Dibujador::SetB(int b) {

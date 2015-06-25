@@ -18,7 +18,7 @@ class Monstruo :public Entidad{
             
     public:
         Monstruo(char*,int,int,int,int);
-        virtual ~Monstruo();
+         ~Monstruo();
         void setExpGain(int);
         int getExpGain();
         int getProbAttack();

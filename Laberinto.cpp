@@ -53,7 +53,37 @@ Laberinto* Laberinto::getLab()  {
 
 
 Laberinto::~Laberinto() {
-    //delete[] lab; por mientras.
+    int M_destr = this->M;
+    int N_destr = this->N;
+    char** lab_destr = this->lab;
+    Celda** celda_destr = this->celda; 
+    double pctMonstruo_destr = this->pctMonstruo;
+    double pctArtefacto_destr = this->pctArtefacto;
+    int* nivelesMonstruo_destr = this->nivelesMonstruo;
+    int* nivelesArtefacto_destr = this->nivelesArtefacto;
+    int inicioX_destr = this->inicioX;
+    int inicioY_destr = this->inicioY;
+    int finX_destr = this->finX;
+    int finY_destr = this->finY;
+    int visitado_destr = this->visitado;
+
+    delete M_destr;
+    delete N_destr;
+    for (int indice = 0 ;  indice< N+1;indice++){
+        delete[] celda_destr[indice];
+    }
+    delete[] celda_destr;
+    delete pctMonstruo_destr;
+    delete  pctArtefacto_destr;
+    delete[] nivelesMonstruo_destr ;
+    delete[] nivelesArtefacto_destr;
+    delete inicioY_destr;
+    delete inicioX_destr;
+    delete finY_destr;
+    delete finX_destr;
+    delete visitado_destr;
+    
+
 }
 
 void Laberinto::cargarCelda(int fila, int col, char car){

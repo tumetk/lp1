@@ -37,3 +37,7 @@ Armadura::Armadura(char*nombre, int cantidad){
     this->setNombre(nombre);
             
 }
+Armadura::~Armadura(){
+	int def = this->defensa;
+	delete defensa;
+}

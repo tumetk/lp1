@@ -313,7 +313,32 @@ void Game::start(){
 }
 
 Game::~Game(){
-    delete this;
+    int number_destr = this->number;
+    delete number_destr;
+    
+    Laberinto* laberintoActual_destr = this->laberintoActual_destr;
+    delete laberintoActual_destr;
+    
+    Laberinto ** listaLaberintos_destr = this->listaLaberintos;
+    for(int indice = 0 ; indice <3 ; indice++){
+        delete listaLaberintos_destr[indice];
+    }
+
+    Dibujador *dibujador_destr = this->dibujador;
+    delete dibujador_destr;
+
+    Avatar *jugador_destr  = this->jugador;
+    delete jugador_destr;
+
+    Monstruo **listamonstruos_destr = this->listamonstruos;
+    for(int indice = 0 ; indice <10 ; indice++){
+        delete listamonstruos_destr[indice];
+    }
+
+    Artefacto **listaartefactos_destr = this->listaartefactos;
+    for(int indice = 0 ; indice <9; indice++){
+        delete listaartefactos_destr[indice];
+    }
 }
 
 int Game::imprimirListaObjetos(int opcion){
