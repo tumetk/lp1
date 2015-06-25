@@ -22,7 +22,7 @@ Laberinto::Laberinto(int M,int N) {
     lab = NULL;
     setN(N);
     setM(M);
-    this->celda = new Celda*[N];
+    
     
     celda = new Celda*[N+1];
     for(int i=0; i<N;i++){
@@ -62,7 +62,7 @@ void Laberinto::cargarCelda(int fila, int col, char car){
     Celda *new_celda ;
     switch(car){
         case ' ':
-            
+            this->pctMonstruo
             new_celda_row[col].setTipo(1); //1 es ADENTRO
             break;
         case '-':
@@ -79,7 +79,7 @@ void Laberinto::cargarCelda(int fila, int col, char car){
             this->finY = fila;
             new_celda_row[col].setTipo(4);//4 es SIGUIENTE
             break;
-        case 'j':
+        case 'X':
             new_celda_row[col].setTipo(5);//jugador
             break;
         case 'm':
@@ -87,7 +87,7 @@ void Laberinto::cargarCelda(int fila, int col, char car){
             break;
         case 'a' :
             new_celda_row[col].setTipo(7);// artefacto
-            break
+            break;
     }
 }
 
@@ -105,7 +105,7 @@ char Laberinto::mostrarCelda(int fila, int col){
     }else if (tipo == 4){
         returned = '+';
     }else if(tipo ==5){ // jugardor tipo 5
-        returned ='°';
+        returned ='X';
     }else if(tipo ==6 || tipo ==7){ // artefacto tipo 7 y monstruo tipo 6
         returned =' ';
     }
@@ -150,7 +150,7 @@ void Laberinto::setVisitado(int estado){
 int Laberinto::getVisitado(){
     return this->visitado;
 }
-int Laberinto::verificarMovimiento(int,int){
+int Laberinto::verificarMovimiento(int new_posx,int new_posy){
     int max_m = this->M;
     int max_n = this->N;
     
@@ -172,7 +172,7 @@ int Laberinto::verificarMonstruo(int new_posx,int new_posy){
 }
 
 int Laberinto::verificarPared(int posx,int posy){
-    Celda new_celda = this->getCelda(new_posx,new_posy);
+    Celda new_celda = this->getCelda(posy,posx);
     if (new_celda.getTipo()==3){
         return 1;
     }else{
@@ -180,10 +180,34 @@ int Laberinto::verificarPared(int posx,int posy){
     }
 }
 int Laberinto::verificarArtefacto(int posx,int posy){
-    Celda new_celda = this->getCelda(new_posx,new_posy);
+    Celda new_celda = this->getCelda(posx,posy);
     if (new_celda.getTipo()==7){
         return 1;
     }else{
         return 0;
     }
+}
+
+Monstruo* Laberinto::getMonstruoByPos(Game *game,int posx,int posy){
+    int a = posx + posy;
+    int b = 10 ;
+    int ret = a % b;
+    if(ret < 0){
+        ret+=b;
+    }
+    int nivel = this->nivelesMonstruo[ret];
+    Monstruo *elegido = game->getMonstruobypos(ret);
+    return elegido;
+}
+Artefacto* Laberinto::getArtefactoByPos(Game* game,int posx,int posy){
+     int a = posx + posy;
+    int b = 10 ;
+    int ret = a % b;
+    if(ret < 0){
+        ret+=b;
+    }
+    int nivel = this->nivelesArtefacto[ret];
+    
+    Artefacto *elegido = game->getArtefactobypos(ret);
+    return elegido;
 }

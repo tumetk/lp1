@@ -57,8 +57,8 @@ int  Entidad::getMaxVida(){
 }
 
 void Entidad::move(int posx,int posy){
-	this->posX = this->posX + posx;
-	this->posY = this->posY + posy;
+	this->posX =  posx;
+	this->posY =  posy;
 }
 
 void Entidad::setNivel(int nivel){

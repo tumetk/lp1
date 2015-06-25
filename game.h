@@ -4,17 +4,18 @@
  *
  * Created on 7 de junio de 2015, 08:27 PM
  */
-#include "Laberinto.h"
+
 #ifndef GAME_H
 #define	GAME_H
 #include "Dibujador.h"
 #include "Avatar.h"
+#include "Laberinto.h"
 class Game {
     private:
         int number;
-        Laberinto* laberintoActual;
-        Laberinto **listaLaberintos;
-        Dibujador *dibujador;
+        class Laberinto* laberintoActual;
+        class Laberinto **listaLaberintos;
+        class Dibujador *dibujador;
         Avatar *jugador ;
         Monstruo **listamonstruos;
         Artefacto **listaartefactos;
@@ -27,14 +28,20 @@ class Game {
         void imprimirLaberinto();
         void accciones();
         int verificarFin(int &);
-        void recoger();
+        void recoger(int,int);
         void moverPersonaje(int,int);
-        void batalla();
+        void batalla(int,int);
+        void imprimirLucha(Monstruo*);
+        int imprimirListaObjetos(int);
+        char getAccion(char*);
+        void usarObjetos(class Monstruo*);
+        void verificarCelda();
     public :
         Game();
         void start();
         virtual ~Game();
-        
+        Monstruo* getMonstruobypos(int);
+        Artefacto* getArtefactobypos(int);
 };
 
 

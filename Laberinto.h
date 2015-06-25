@@ -11,7 +11,7 @@
 #include "Celda.h"
 #include "Artefacto.h"
 #include "Monstruo.h"
-
+#include "game.h"
 class Laberinto {
 private:
     int M;
@@ -52,6 +52,8 @@ public:
     int verificarMonstruo(int,int);
     int verificarPared(int,int);
     int verificarArtefacto(int,int);
+    class Monstruo* getMonstruoByPos( class Game*,int,int);
+    class Artefacto * getArtefactoByPos(class Game*,int,int);
 };
 
 #endif	/* LABERINTO_H */

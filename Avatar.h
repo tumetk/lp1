@@ -30,7 +30,7 @@ class Avatar:public Entidad{
     	void setExpActual(int);
     	int  getExpActual();
     	void RecibeDano(int);
-    	Artefacto* interaccion(Monstruo,char);
+    	Artefacto* interaccion(Monstruo*,char);
         void equiparArma(class Arma*);
         void equiparArmadura(class Armadura*);
         void setArmadura( class Armadura *);
