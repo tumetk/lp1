@@ -1,3 +1,15 @@
-P curacion 10
-A chainmail 20
-W espada 10 20
+P Curacion 15
+P Regeneracion 100 
+P MasteryElixir 25 
+A HEVSuit 12
+A TanookiSuit 15
+A Chainmail 10
+A PlateArmor 14
+A PowerSuit 18
+A ScorpionSuit 25
+W Thunderfury 15 30
+W Crowbar 8 8
+W DrakeSword 13 20
+W Boomerang 6 12
+W LightingSpear 12 19 
+W Mace 8 16
