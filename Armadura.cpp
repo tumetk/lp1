@@ -23,8 +23,9 @@
 using namespace std;
 
 
-void Armadura::usar(class Avatar& avatar){
-    avatar.equiparArmadura(this);
+void Armadura::usar(class Avatar*& avatar){
+    avatar->equiparArmadura(this);
+    cout<<"Equipaste "<<this->getNombre()<<endl;
 }
 void Armadura::setDefensa(int defensa){
     this->defensa = defensa;
@@ -35,9 +36,12 @@ int Armadura::getDefensa(){
 Armadura::Armadura(char*nombre, int cantidad){
     this->defensa = cantidad;
     this->setNombre(nombre);
-            
+    this->setTipo(2);
 }
 Armadura::~Armadura(){
 	int def = this->defensa;
 	
+}
+Armadura::Armadura(){
+    
 }

@@ -25,6 +25,7 @@ using namespace std;
 PocionCuracion::PocionCuracion(char* nombre, int cantidad){
     this->puntosVida = cantidad;
     this->setNombre(nombre);
+    this->setTipo(3);
 }
 void PocionCuracion::setPuntosVida(int vida){
     this->puntosVida = vida;
@@ -32,16 +33,20 @@ void PocionCuracion::setPuntosVida(int vida){
 int PocionCuracion::getPuntosVida(){
     return this->puntosVida;
 }
-void PocionCuracion::usar(class Avatar& avatar){
-    int vidaactual = avatar.getVidaActual();
+void PocionCuracion::usar(class Avatar*& avatar){
+    int vidaactual = avatar->getVidaActual();
     int nueva_vida = vidaactual + this->puntosVida;
-    if (nueva_vida >= avatar.getMaxVida()){
-        avatar.setVidaActual(avatar.getMaxVida());
+    if (nueva_vida >= avatar->getMaxVida()){
+        avatar->setVidaActual(avatar->getMaxVida());
     }else{
-        avatar.setVidaActual(nueva_vida);
+        avatar->setVidaActual(nueva_vida);
+        cout<<"Tu vida ahora es "<<nueva_vida;
     }
 }
 
 PocionCuracion::~PocionCuracion(){
 //    delete this->puntosVida;
+}
+PocionCuracion::PocionCuracion(){
+    
 }

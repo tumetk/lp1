@@ -15,8 +15,9 @@ class PocionCuracion:public Artefacto{
         PocionCuracion(char *,int);
         void setPuntosVida(int );
         int getPuntosVida();
-        void usar( Avatar&);
+        void usar( Avatar*&);
         ~PocionCuracion();
+        PocionCuracion();
 };
 
 #endif	/* POCIONCURACION_H */

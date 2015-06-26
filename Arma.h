@@ -21,9 +21,9 @@ class Arma:public Artefacto{
         int getDanhoMin();
         int getDanhoMax();
         
-        void usar(class Avatar&);
+        void usar(class Avatar*&);
         ~Arma();
-            
+        Arma();
 };
 
 #endif	/* ARMA_H */

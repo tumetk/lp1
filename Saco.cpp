@@ -23,9 +23,9 @@
 using namespace std;
 
 Saco::Saco(int tipo){
-    this->lista = new Artefacto*[100];
+    this->lista = new Artefacto*[10];
     this->tamano = 0;
-    this->capacidad = 0;
+    this->capacidad = 10;
     this->tipo = tipo;
     
 }
@@ -73,8 +73,8 @@ void Saco::setCapacidad(int capacidad){
 
 int Saco::push(Artefacto* artefacto){
     int tamano = this->tamano;
-    tamano++;
-    if (this->capacidad >= tamano){
+    
+    if (this->capacidad >= tamano+1){
         this->lista[tamano] = artefacto;
         this->tamano += 1;
         return 1 ;
@@ -82,7 +82,7 @@ int Saco::push(Artefacto* artefacto){
         Artefacto **old_lista = this->lista;
         this->lista = new Artefacto*[this->capacidad + 10];
         this->capacidad += 10;
-        for(int x = 0 ; x< this->capacidad;x++){
+        for(int x = 0 ; x< this->tamano;x++){
             this->lista[x] = old_lista[x];
         }
         this->lista[tamano] = artefacto;

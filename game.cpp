@@ -21,7 +21,7 @@
 #include "ejemplo.h"
 const int   CANTIDAD  = 3 ;
 const int CANTIDAD_MONSTRUO = 10;
-const int CANTIDAD_LABERINTOS =1;
+const int CANTIDAD_LABERINTOS =3;
 using namespace std;
 Artefacto **Game::levantarArtefactos(){
     ifstream lectura("artefactos.txt");
@@ -92,7 +92,7 @@ Game::Game(){
     
     
     this->number          = 1;
-    cout << "tume se la come";
+    
     
 }
 void Game::historia(){
@@ -164,19 +164,24 @@ void Game::batalla(int posx, int posy){
     int fin = 0 ;
     Monstruo* encontrado = this->laberintoActual->getMonstruoByPos(this,posx,posy);
     char accion ; 
-   
+    int objetos = 0 ;
     do{
         // verificar si sigo vivo
         if (this->jugador->getVidaActual()<= 0 ){
             fin = 1;
         }else {
             this->imprimirLucha(encontrado);
-            this->imprimirListaObjetos(1);// agregar vida actual avatar desde el inicio ctm
+            objetos = this->imprimirListaObjetos(1);// agregar vida actual avatar desde el inicio ctm
             accion = this->getAccion(encontrado->getNombre());
             if (accion == 'A'){
                 this->jugador->interaccion(encontrado,accion);
             }else if(accion =='E'){
-                this->usarObjetos(encontrado);
+                if (objetos == 0 ){
+                     gotoxy(45,13);
+                     cout<<"No tienes objetos en tu saco "<<endl; 
+                }else {
+                    this->usarObjetos(encontrado);
+                }
             }
             if (encontrado->getVidaActual() <= 0){
                 fin = 1 ;
@@ -191,16 +196,17 @@ void Game::batalla(int posx, int posy){
 void Game::usarObjetos(Monstruo* encontrado){
     this->imprimirLucha(encontrado);
     int opcion = 0 ;
-    opcion =this->imprimirListaObjetos(1);
-    this->imprimirUI();
-    this->imprimirLaberinto();
 
     do{
         cin>>opcion ;
-        if (opcion >this->jugador->getMisArtefactos()->getTamano() || opcion<=0){
+        if (opcion-1 >this->jugador->getMisArtefactos()->getTamano() || opcion<=0){
             opcion = 0 ;
+            cout<<"Opcion no valida";
         }
+        
     }while(opcion == 0);
+    Artefacto* elegido =this->jugador->getMisArtefactos()->getElemento(opcion);
+    elegido->usar(this->jugador);
 }
 
 void Game::imprimirLucha(Monstruo* encontrado){
@@ -238,7 +244,22 @@ char Game::getAccion(char *nombre){
 }
 void Game::recoger(int posx,int posy){
     Artefacto * elegido  = this->laberintoActual->getArtefactoByPos(this,posx,posy);
-    this->jugador->agregarArtefacto(elegido);
+    
+    if (elegido->getTipo() ==1){
+        Arma *new_artefacto = new Arma;
+        new_artefacto = (Arma*)elegido;
+        this->jugador->agregarArtefacto(new_artefacto);
+    }else if (elegido->getTipo() ==2){
+        Armadura *new_artefacto = new Armadura;
+        new_artefacto = (Armadura*)elegido;
+        this->jugador->agregarArtefacto(new_artefacto);
+    }else if(elegido->getTipo()==3){
+        PocionCuracion *new_artefacto = new PocionCuracion;
+        new_artefacto = (PocionCuracion*)elegido;
+        this->jugador->agregarArtefacto(new_artefacto);
+    }
+    
+    
     gotoxy(10,33);
     cout<<"Recogiste "<<elegido->getNombre()<<endl;
 }
@@ -361,26 +382,18 @@ int Game::imprimirListaObjetos(int opcion){
     int cantidad  = listaObjetos->getTamano();
     int indice ;
     for (indice = 0 ; indice <cantidad;indice ++){
-        gotoxy(10+indice,70);
+        gotoxy(10,50+indice);
         Artefacto* elegido = listaObjetos->getElemento(indice);
         cout<< elegido->getNombre()<<endl;
         
     }
     int opcionElegida = 0 ;
     if (cantidad == 0){
-        gotoxy(50,10);
+        gotoxy(45,13);
         cout<<"No tienes objetos en tu saco "<<endl; 
-    }else{
-        do{
-            gotoxy(50,10);
-            cout<<"Eliga objeto a usar"<<endl;
-            gotoxy(52,10);
-            cin>>opcionElegida;
-            if (opcionElegida>listaObjetos->getTamano() || opcionElegida<= 0){
-                opcionElegida = 0 ;
-            }
-        }while(opcionElegida == 0);
+        return 0;
     }
+    return 1;
 }
 
 Monstruo* Game::getMonstruobypos(int indice){

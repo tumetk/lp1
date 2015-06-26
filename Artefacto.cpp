@@ -22,7 +22,7 @@
 #include "ejemplo.h"
 using namespace std;
 
-void Artefacto::usar(Avatar&){
+void Artefacto::usar(Avatar*&){
     
 }
 
@@ -40,4 +40,10 @@ Artefacto::~Artefacto(){
 	int tipo_destr = this->tipo;
 	delete []nombre_destr;
 	
+}
+int Artefacto::getTipo(){
+    return this->tipo;
+}
+void Artefacto::setTipo(int tipo){
+    this->tipo = tipo;
 }

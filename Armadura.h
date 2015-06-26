@@ -15,10 +15,11 @@ class Armadura: public Artefacto{
     public:
         Armadura(char *,int);
         
-        void usar(class Avatar&);
+        void usar(class Avatar*&);
         void setDefensa(int);
         int getDefensa();
         ~Armadura();
+        Armadura();
         
 };
 

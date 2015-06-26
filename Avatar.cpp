@@ -79,10 +79,15 @@ Artefacto* Avatar::interaccion(Monstruo *enemigo,char accion){
             Saco *mi_saco = enemigo->getMisArtefactos();
             
             int tamano = mi_saco->getTamano();
-            int elegido = rand()%tamano+1;
-            Artefacto* premio = mi_saco->getElemento(elegido);
-            this->agregarArtefacto(premio);
-            return premio;
+            if (tamano != 0 ){
+                int elegido = (rand()%tamano)+1;
+                Artefacto* premio = mi_saco->getElemento(elegido);
+                this->agregarArtefacto(premio);
+                return premio;
+            }else {
+                return NULL;
+            }
+            
         }else{
             return NULL;
         }

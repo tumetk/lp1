@@ -13,10 +13,12 @@ private:
     int tipo;
     char* nombre;
     public:
-       virtual void usar( class Avatar&) = 0 ;
+       virtual void usar( class Avatar*&) = 0 ;
        void setNombre(char *);
        char * getNombre();
        virtual ~Artefacto();
+       int getTipo();
+       void setTipo(int);
 };
 
 #endif	/* ARTEFACTO_H */
