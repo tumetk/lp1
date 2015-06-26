@@ -54,6 +54,7 @@ public:
     int verificarArtefacto(int,int);
     class Monstruo* getMonstruoByPos( class Game*,int,int);
     class Artefacto * getArtefactoByPos(class Game*,int,int);
+    int verificarSalidas(int,int);
 };
 
 #endif	/* LABERINTO_H */

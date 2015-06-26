@@ -38,6 +38,7 @@ void PocionCuracion::usar(class Avatar*& avatar){
     int nueva_vida = vidaactual + this->puntosVida;
     if (nueva_vida >= avatar->getMaxVida()){
         avatar->setVidaActual(avatar->getMaxVida());
+        cout<<"Tu vida esta al maximo";
     }else{
         avatar->setVidaActual(nueva_vida);
         cout<<"Tu vida ahora es "<<nueva_vida;

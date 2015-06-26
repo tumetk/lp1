@@ -70,6 +70,7 @@ int  Avatar::getBaseAttack(){
 Artefacto* Avatar::interaccion(Monstruo *enemigo,char accion){
 
     int attack = rand() %100 +1;
+    
     if (accion == 'A'){
         enemigo->setVidaActual(enemigo->getVidaActual()-this->baseAttack);
         if (enemigo->getVidaActual()== 0){
@@ -93,7 +94,12 @@ Artefacto* Avatar::interaccion(Monstruo *enemigo,char accion){
         }
     }else if (accion == 'D'){
         if (attack<= enemigo->getProbAttack()){
-            this->RecibeDano(enemigo->getBaseAttack());
+            int defensa= 0;
+            if (this->armaduraequipada){
+                defensa = this->armaduraequipada->getDefensa()*0.2;
+            }
+            
+            this->RecibeDano(enemigo->getBaseAttack()- defensa);
             return NULL;
         }
     }
@@ -112,6 +118,8 @@ Avatar::Avatar(char *nombre ,int maxVida,int tipo){
 	this->estado=1;
 	this->totalExpNextLevel=100;
 	this->baseAttack= 10;
+        this->armaduraequipada = NULL;
+        this->armaequipada = NULL;
 }
 Avatar::~Avatar(){
 	int expActual_destr= this->expActual;

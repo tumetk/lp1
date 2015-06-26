@@ -1,6 +1,7 @@
 
 #include "interfaz.h"
 #include "Laberinto.h"
+#include "Arma.h"
 #include <time.h>
 #include <cstdlib>
 #include <iostream>
@@ -23,7 +24,7 @@ Laberinto::Laberinto(int M,int N) {
     lab = NULL;
     setN(N);
     setM(M);
-    
+    this->visitado = 0 ;
     
     celda = new Celda*[N+1];
     for(int i=0; i<N;i++){
@@ -252,4 +253,13 @@ Artefacto* Laberinto::getArtefactoByPos(Game* game,int posx,int posy){
     
     Artefacto *elegido = game->getArtefactobypos(ret);
     return elegido;
+}
+int Laberinto::verificarSalidas(int posx,int posy){
+    Celda new_celda = this->getCelda(posy,posx);
+    if(new_celda.getTipo()==2){
+        return -1;
+    }else if(new_celda.getTipo()==4) {
+        return 1;
+    }
+    return 0;
 }

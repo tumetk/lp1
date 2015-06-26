@@ -4,11 +4,12 @@
  *
  * Created on 7 de junio de 2015, 10:48 PM
  */
-#include "Entidad.h"
-#include "Monstruo.h"
+
 #ifndef AVATAR_H
 #define	AVATAR_H
-
+#include "Entidad.h"
+#include "Monstruo.h"
+#include "Arma.h"
 class Avatar:public Entidad{
 	private:
 		int expActual;

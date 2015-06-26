@@ -88,8 +88,8 @@ int play(int option){
     }else if(key == '\r'){
         if (option == 10){
             Game *juego = new Game;
-            juego->start();
-            return 10;
+            int final =juego->start();
+            return final;
         }else if (option == 11){
             instructions();
             return 10;

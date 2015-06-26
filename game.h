@@ -26,19 +26,19 @@ class Game {
         int verificar();
         void imprimirUI();
         void imprimirLaberinto();
-        void accciones();
-        int verificarFin(int &);
+        int accciones();
+        int verificarFin(int &,int);
         void recoger(int,int);
         void moverPersonaje(int,int);
-        void batalla(int,int);
+        int batalla(int,int);
         void imprimirLucha(Monstruo*);
         int imprimirListaObjetos(int);
         char getAccion(char*);
         void usarObjetos(class Monstruo*);
-        void verificarCelda();
+        int verificarCelda();
     public :
         Game();
-        void start();
+         int start();
         virtual ~Game();
         Monstruo* getMonstruobypos(int);
         Artefacto* getArtefactobypos(int);
