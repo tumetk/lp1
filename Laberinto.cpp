@@ -11,8 +11,9 @@ using namespace std;
 
 Laberinto::Laberinto(int M,int N) {
     srand(time(NULL));
-    pctMonstruo = (rand()%10)/10;
-    pctArtefacto = (rand()%10)/10;
+    pctMonstruo = (rand()%100)+1;
+    int resta = 100 - pctMonstruo;
+    pctArtefacto = (rand()%resta )+1;
     nivelesMonstruo = new int[10];
     nivelesArtefacto = new int[10];
     for(int i=0; i<10;i++){
@@ -60,10 +61,20 @@ void Laberinto::cargarCelda(int fila, int col, char car){
     
     Celda *new_celda_row = this->celda[fila];
     Celda *new_celda ;
+    int probalidadMonstruo = this->pctMonstruo;
+    int probalidadArtefacto = this->pctArtefacto;
+    int porcentaje ;
     switch(car){
         case ' ':
-            this->pctMonstruo
-            new_celda_row[col].setTipo(1); //1 es ADENTRO
+             porcentaje = rand() %100 +1;
+            if (porcentaje >=1 && porcentaje <= probalidadMonstruo){
+                new_celda_row[col].setTipo(6);
+            }else if (porcentaje > probalidadMonstruo && porcentaje <= probalidadMonstruo + probalidadArtefacto ){
+                new_celda_row[col].setTipo(7);
+            }else {
+                new_celda_row[col].setTipo(1);
+            }
+             //1 es ADENTRO
             break;
         case '-':
             this->inicioX = col ;
@@ -163,7 +174,7 @@ int Laberinto::verificarMovimiento(int new_posx,int new_posy){
     return 1 ;
 }
 int Laberinto::verificarMonstruo(int new_posx,int new_posy){
-    Celda new_celda = this->getCelda(new_posx,new_posy);
+    Celda new_celda = this->getCelda(new_posy,new_posx);
     if (new_celda.getTipo()==6){
         return 1;
     }else{
@@ -180,7 +191,7 @@ int Laberinto::verificarPared(int posx,int posy){
     }
 }
 int Laberinto::verificarArtefacto(int posx,int posy){
-    Celda new_celda = this->getCelda(posx,posy);
+    Celda new_celda = this->getCelda(posy,posx);
     if (new_celda.getTipo()==7){
         return 1;
     }else{

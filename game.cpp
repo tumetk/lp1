@@ -255,8 +255,9 @@ void Game::accciones(){
     }
     if (this->laberintoActual->verificarMovimiento(new_posx,new_posy)){
         if(!this->laberintoActual->verificarPared(new_posx,new_posy)){
-           this->laberintoActual->cargarCelda(posy,posx,' '); 
            this->jugador->move(new_posx,new_posy);
+           this->verificarCelda();
+           this->laberintoActual->cargarCelda(posy,posx,' ');
            this->laberintoActual->cargarCelda(new_posy,new_posx,'X');
         }                            
     }else{
@@ -271,7 +272,7 @@ void Game::verificarCelda(){
         this->batalla(posx,posy);
     }
     if(this->laberintoActual->verificarArtefacto(posx,posy)){
-       this->recoger(posx,posx);
+       this->recoger(posx,posy);
     }
 }
 int Game::verificarFin(int &nivelLaberinto){
