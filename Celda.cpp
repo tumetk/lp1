@@ -35,5 +35,5 @@ int Celda::getTipo(){
     return this->tipo;
 }
 Celda::~Celda(){
-    delete this->tipo;
+//    delete this->tipo;
 }

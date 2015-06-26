@@ -43,5 +43,5 @@ void PocionCuracion::usar(class Avatar& avatar){
 }
 
 PocionCuracion::~PocionCuracion(){
-    delete this->puntosVida;
+//    delete this->puntosVida;
 }

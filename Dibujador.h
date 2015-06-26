@@ -8,7 +8,7 @@
 #ifndef DIBUJADOR_H
 #define	DIBUJADOR_H
 #include "Laberinto.h"
-
+#include "game.h"
 class Dibujador {
 private:
     int A;
@@ -24,7 +24,7 @@ public:
     void SetA(int);
     int GetA() const;
     void buscarJugador( class Laberinto*,int &,int &);
-    void crear(class Laberinto*);   
+    void crear(class Laberinto*, class Game*);   
     void imprime(int,int);
 };
 

@@ -157,7 +157,7 @@ int Game::verificar(){
 void Game::imprimirLaberinto(){
     gotoxy(10,5);        
     cout << "Laberinto";                
-    this->dibujador->crear(this->laberintoActual);    
+    this->dibujador->crear(this->laberintoActual,this);    
     this->dibujador->imprime(10,8); 
 }
 void Game::batalla(int posx, int posy){
@@ -166,16 +166,24 @@ void Game::batalla(int posx, int posy){
     char accion ; 
    
     do{
-        this->imprimirLucha(encontrado);
-        this->imprimirListaObjetos(1);
-        accion = this->getAccion(encontrado->getNombre());
-        if (accion == 'A'){
-            this->jugador->interaccion(encontrado,accion);
-        }else if(accion =='E'){
-            this->usarObjetos(encontrado);
+        // verificar si sigo vivo
+        if (this->jugador->getVidaActual()<= 0 ){
+            fin = 1;
+        }else {
+            this->imprimirLucha(encontrado);
+            this->imprimirListaObjetos(1);// agregar vida actual avatar desde el inicio ctm
+            accion = this->getAccion(encontrado->getNombre());
+            if (accion == 'A'){
+                this->jugador->interaccion(encontrado,accion);
+            }else if(accion =='E'){
+                this->usarObjetos(encontrado);
+            }
+            if (encontrado->getVidaActual() <= 0){
+                fin = 1 ;
+            }else{
+                this->jugador->interaccion(encontrado,'D');
+            }
         }
-
-        this->jugador->interaccion(encontrado,'D');
 
     }while (fin == 0);
 
@@ -196,19 +204,20 @@ void Game::usarObjetos(Monstruo* encontrado){
 }
 
 void Game::imprimirLucha(Monstruo* encontrado){
-    gotoxy(30,30);
+    gotoxy(45,15);
     cout<<(this->jugador->getNombre())<<'\t'<<(encontrado->getNombre())<<endl;
-    gotoxy(30,32);
+    gotoxy(45,17);
     cout<<(this->jugador->getVidaActual())<<'\t'<<(encontrado->getVidaActual())<<endl;
 }
 char Game::getAccion(char *nombre){
-     gotoxy(10,33);
      
-    this->imprimirUI();
+     
+    this->imprimirUI(); // crear un metodo limpiarconsola
     this->imprimirLaberinto();  
-    cout<<"Encontraste a "<<nombre<<"empiezan las luchas"<<endl;
+    gotoxy(10,33);
+    cout<<"Encontraste a "<<nombre<<endl<<"empiezan las luchas"<<endl<<"en casa de juanjo!!!!!!!!"<<endl;
     cout<<"Ingresa  comandos:"<<endl;
-    gotoxy(10,38);
+    //gotoxy(10,38);// no se neceista 
     int accion = 0 ;
     char comando ;
     do{
@@ -219,9 +228,12 @@ char Game::getAccion(char *nombre){
             accion = 1 ;
         }else{
             cout<<"Opcion Invalida"<<endl;
+              cin.sync();
+
         }
     }while(accion == 0);
     
+    return comando;
     
 }
 void Game::recoger(int posx,int posy){
@@ -255,8 +267,10 @@ void Game::accciones(){
     }
     if (this->laberintoActual->verificarMovimiento(new_posx,new_posy)){
         if(!this->laberintoActual->verificarPared(new_posx,new_posy)){
-           this->laberintoActual->cargarCelda(posy,posx,' '); 
+  
            this->jugador->move(new_posx,new_posy);
+            this->verificarCelda();
+           this->laberintoActual->cargarCelda(posy,posx,' ');
            this->laberintoActual->cargarCelda(new_posy,new_posx,'X');
         }                            
     }else{
@@ -271,7 +285,7 @@ void Game::verificarCelda(){
         this->batalla(posx,posy);
     }
     if(this->laberintoActual->verificarArtefacto(posx,posy)){
-       this->recoger(posx,posx);
+       this->recoger(posx,posy);
     }
 }
 int Game::verificarFin(int &nivelLaberinto){
@@ -315,9 +329,9 @@ void Game::start(){
 
 Game::~Game(){
     int number_destr = this->number;
-    delete number_destr;
+//    delete number_destr;
     
-    Laberinto* laberintoActual_destr = this->laberintoActual_destr;
+    Laberinto* laberintoActual_destr = this->laberintoActual;
     delete laberintoActual_destr;
     
     Laberinto ** listaLaberintos_destr = this->listaLaberintos;
@@ -374,4 +388,7 @@ Monstruo* Game::getMonstruobypos(int indice){
 }
 Artefacto* Game::getArtefactobypos(int indice){
     return this->listaartefactos[indice];
+}
+Avatar * Game::getJugador(){
+    return this->jugador;
 }

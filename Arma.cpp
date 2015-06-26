@@ -48,6 +48,5 @@ void Arma::usar(class Avatar& avatar){
 Arma::~Arma(){
 	int min_destr = this->danhoMin;
 	int max_destr = this->danhoMax;
-	delete min_destr;
-	delete max_destr;
+
 }

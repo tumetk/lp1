@@ -44,8 +44,8 @@ Dibujador::~Dibujador() {
         delete[] fila_destr;
     }
     delete[] dib_destr;
-    delete A_destr;
-    delete B_destr;
+//    delete A_destr;
+//    delete B_destr;
 
 
 
@@ -81,98 +81,123 @@ void Dibujador::buscarJugador(Laberinto *lab, int &fil, int &col){
     return;
 }
 
-void Dibujador::crear(Laberinto *lab){
+void Dibujador::crear(Laberinto *lab, Game* game){
     int i=0, j=0;
-    buscarJugador(lab,i,j);
-    //i=0; j=6;
-    int pasosRestantesX, pasosRestantesY;
-    int yW=i,yS=i,xA=j,xD=j;
-    int indiceYW=0, indiceYS=0, indiceXA=0, indiceXD=0;
-    //para arriba
-    int y=i,x=j,pasoA = A, pasoB = B;
-    while(y>=0 && pasoA>0){
-        y--;
-        pasoA--;
-    }
-    if(y<0){
-        indiceYW = 1;
-        pasosRestantesY = pasoA;
-        yW = i - (A - pasoA) + 1;
-    }
-    else
-        yW = y - pasoA; 
-    //para abajo
-    y=i,x=j,pasoA = A, pasoB = B;
-    while(y<lab->getN() && pasoA>0){
-        y++;
-        pasoA--;
-    }
-    if(y>=lab->getN()){
-        indiceYS = 1;        
-        pasosRestantesY = pasoA;
-        yS = i + (A - pasoA) - 1;
-    }
-    else
-        yS = y - pasoA; 
-    //para derecha
-    y=i,x=j,pasoA = A, pasoB = B;
-    while(x<lab->getM() && pasoB>0){
-        x++;
-        pasoB--;
-    }
-    if(x>=lab->getM()){
-        indiceXD = 1;
-        pasosRestantesX = pasoB;
-        xD = j + (B - pasoB) + 1;
-    }
-    else
-        xD = x + pasoB; 
-    //para izquierda
-    y=i,x=j,pasoA = A, pasoB = B;
-    while(x>=0 && pasoB>0){
-        x--;
-        pasoB--;
-    }
-    if(x<0){
-        indiceXA = 1;
-        pasosRestantesX = pasoB;
-        xA = j - (B - pasoB) + 1;
-    }
-    else
-        xA = x - pasoB; 
+    //buscarJugador(lab,i,j);
+    Avatar * jugador = game->getJugador();
+    i = jugador->getPosX();
+    j = jugador->getPosY();
+    int a = this->A;
+    int b = this->B;
+    int baseX = i - a;
+    int baseY = j - b;
+    int topX = i+a ;
+    int topY = j+b ;
     
-    if(indiceYW == 1){
-        if(indiceXA == 1){
-            for(int a=0,i=yW-(pasosRestantesY*indiceYS); i<yS+(pasosRestantesY*indiceYW)+1+1; a++,i++){
-                for(int b=0,j=xA-(pasosRestantesX*indiceXD); j<xD+(pasosRestantesX*indiceXA)+1+1; b++,j++){
-                    this->dib[a][b] = lab->mostrarCelda(i,j);
-                }
-            }
-        }
-        else{
-            for(int a=0,i=yW-(pasosRestantesY*indiceYS); i<yS+(pasosRestantesY*indiceYW)+1+1; a++,i++){
-                for(int b=0,j=xA-(pasosRestantesX*indiceXD)-1; j<=xD+(pasosRestantesX*indiceXA); b++,j++){
-                    this->dib[a][b] = lab->mostrarCelda(i,j);
-                }
+    for (int indicey = 0 ; indicey< 2*b+1 ; indicey++){
+        for(int indicex = 0 ; indicex< 2*a +1 ; indicex++){
+            if(baseX + indicex <0 || baseY + indicey < 0 || baseX +indicex >=lab->getM() || baseY + indicey>= lab->getN() ){
+                this->dib[indicey][indicex] = ' ';
+            }else{
+                this->dib[indicey][indicex] = lab->mostrarCelda(indicey+baseY,indicex+baseX);
             }
         }
     }
-    else{
-        if(indiceXA == 1){
-            for(int a=0,i=yW-(pasosRestantesY*indiceYS)-1; i<=yS+(pasosRestantesY*indiceYW); a++,i++){
-                for(int b=0,j=xA-(pasosRestantesX*indiceXD); j<xD+(pasosRestantesX*indiceXA)+1+1; b++,j++){
-                    this->dib[a][b] = lab->mostrarCelda(i,j);
-                }
-            }
-        }
-        else{
-            for(int a=0,i=yW-(pasosRestantesY*indiceYS)-1; i<=yS+(pasosRestantesY*indiceYW); a++,i++){
-                for(int b=0,j=xA-(pasosRestantesX*indiceXD)-1; j<=xD+(pasosRestantesX*indiceXA); b++,j++){
-                    this->dib[a][b] = lab->mostrarCelda(i,j);
-                }
-            }
-        }
-    }
+    
+    
+    
+    
+    
+    
+    //i=0; j=6;
+//    int pasosRestantesX, pasosRestantesY;
+//    int yW=i,yS=i,xA=j,xD=j;
+//    int indiceYW=0, indiceYS=0, indiceXA=0, indiceXD=0;
+//    //para arriba
+//    int y=i,x=j,pasoA = A, pasoB = B;
+//    while(y>=0 && pasoA>0){
+//        y--;
+//        pasoA--;
+//    }
+//    if(y<0){
+//        indiceYW = 1;
+//        pasosRestantesY = pasoA;
+//        yW = i - (A - pasoA) + 1;
+//    }
+//    else
+//        yW = y - pasoA; 
+//    //para abajo
+//    y=i,x=j,pasoA = A, pasoB = B;
+//    while(y<lab->getN() && pasoA>0){
+//        y++;
+//        pasoA--;
+//    }
+//    if(y>=lab->getN()){
+//        indiceYS = 1;        
+//        pasosRestantesY = pasoA;
+//        yS = i + (A - pasoA) - 1;
+//    }
+//    else
+//        yS = y - pasoA; 
+//    //para derecha
+//    y=i,x=j,pasoA = A, pasoB = B;
+//    while(x<lab->getM() && pasoB>0){
+//        x++;
+//        pasoB--;
+//    }
+//    if(x>=lab->getM()){
+//        indiceXD = 1;
+//        pasosRestantesX = pasoB;
+//        xD = j + (B - pasoB) + 1;
+//    }
+//    else
+//        xD = x + pasoB; 
+//    //para izquierda
+//    y=i,x=j,pasoA = A, pasoB = B;
+//    while(x>=0 && pasoB>0){
+//        x--;
+//        pasoB--;
+//    }
+//    if(x<0){
+//        indiceXA = 1;
+//        pasosRestantesX = pasoB;
+//        xA = j - (B - pasoB) + 1;
+//    }
+//    else
+//        xA = x - pasoB; 
+//    
+//    if(indiceYW == 1){
+//        if(indiceXA == 1){
+//            for(int a=0,i=yW-(pasosRestantesY*indiceYS); i<yS+(pasosRestantesY*indiceYW)+1+1; a++,i++){
+//                for(int b=0,j=xA-(pasosRestantesX*indiceXD); j<xD+(pasosRestantesX*indiceXA)+1+1; b++,j++){
+//                    this->dib[a][b] = lab->mostrarCelda(i,j);
+//                }
+//            }
+//        }
+//        else{
+//            for(int a=0,i=yW-(pasosRestantesY*indiceYS); i<yS+(pasosRestantesY*indiceYW)+1+1; a++,i++){
+//                for(int b=0,j=xA-(pasosRestantesX*indiceXD)-1; j<=xD+(pasosRestantesX*indiceXA); b++,j++){
+//                    this->dib[a][b] = lab->mostrarCelda(i,j);
+//                }
+//            }
+//        }
+//    }
+//    else{
+//        if(indiceXA == 1){
+//            for(int a=0,i=yW-(pasosRestantesY*indiceYS)-1; i<=yS+(pasosRestantesY*indiceYW); a++,i++){
+//                for(int b=0,j=xA-(pasosRestantesX*indiceXD); j<xD+(pasosRestantesX*indiceXA)+1+1; b++,j++){
+//                    this->dib[a][b] = lab->mostrarCelda(i,j);
+//                }
+//            }
+//        }
+//        else{
+//            for(int a=0,i=yW-(pasosRestantesY*indiceYS)-1; i<=yS+(pasosRestantesY*indiceYW); a++,i++){
+//                for(int b=0,j=xA-(pasosRestantesX*indiceXD)-1; j<=xD+(pasosRestantesX*indiceXA); b++,j++){
+//                    this->dib[a][b] = lab->mostrarCelda(i,j);
+//                }
+//            }
+//        }
+//    }
 }
 
 void Dibujador::imprime(int x, int y){

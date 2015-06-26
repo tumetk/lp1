@@ -100,6 +100,7 @@ Avatar::Avatar(char *nombre ,int maxVida,int tipo){
 	this->setNivel(1) ;
 	this->setNombre(nombre);
 	this->setMaxVida(maxVida) ;
+        this->setVidaActual(maxVida);
 	this->newBag(tipo);
 	this->expActual=0;
 	this->expNextLevel=100;
@@ -110,16 +111,16 @@ Avatar::Avatar(char *nombre ,int maxVida,int tipo){
 Avatar::~Avatar(){
 	int expActual_destr= this->expActual;
 	int expNextLevel_destr= this->expNextLevel;
-	int estado_destr= this->estado_destr;
+	int estado_destr= this->estado;
 	int totalExpNextLevel_destr=this->totalExpNextLevel;
 	int baseAttack_destr=this->baseAttack;
     Arma* armaequipada_destr= this->armaequipada;
     Armadura* armaduraequipada_destr=this->armaduraequipada;
-    delete expActual_destr;
-    delete expNextLevel_destr;
-    delete estado_destr;
-    delete totalExpNextLevel_destr;
-    delete baseAttack_destr;
+//    delete expActual_destr;
+//    delete expNextLevel_destr;
+//    delete estado_destr;
+//    delete totalExpNextLevel_destr;
+//    delete baseAttack_destr;
     delete armaduraequipada_destr;
     delete armaequipada_destr;
 }

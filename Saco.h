@@ -21,7 +21,7 @@ class Saco{
         Artefacto *getElemento(int);
         int getTipo();
         void setTipo(int);
-        virtual ~Saco();
+        
         void setTamano(int);
         int getCapacidad();
         void setCapacidad(int);

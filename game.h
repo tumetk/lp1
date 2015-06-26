@@ -42,6 +42,7 @@ class Game {
         virtual ~Game();
         Monstruo* getMonstruobypos(int);
         Artefacto* getArtefactobypos(int);
+        Avatar * getJugador();
 };
 
 

@@ -39,5 +39,5 @@ Armadura::Armadura(char*nombre, int cantidad){
 }
 Armadura::~Armadura(){
 	int def = this->defensa;
-	delete defensa;
+	
 }

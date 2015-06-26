@@ -72,21 +72,21 @@ int Entidad::getNivel(){
 
 
 Entidad::~Entidad(){
-	char *nombre_destr = this->nombre;
-	delete[] nombre_destr;
-	int posX_destr = this->posX;
+    char *nombre_destr = this->nombre;
+    delete[] nombre_destr;
+    int posX_destr = this->posX;
     int posY_destr = this->posY;
     int maxVida_destr = this->maxVida;
     int nivel_destr = this->nivel;
     Saco* misArtefactos_destr = this->misArtefactos;
     int vidaActual_destr = this->vidaActual;
-
-    delete posX;
-    delete posY;
-    delete maxVida;
-    delete nivel;
+    
+//    delete posX;
+//    delete posY;
+//    delete maxVida;
+//    delete nivel;
     delete misArtefactos;
-    delete vidaActual;
+//    delete vidaActual;
 }
 
 void Entidad::agregarArtefacto(Artefacto* objeto){

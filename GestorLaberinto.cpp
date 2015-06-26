@@ -15,7 +15,7 @@ GestorDeLaberinto::GestorDeLaberinto(const GestorDeLaberinto& orig) {
 
 GestorDeLaberinto::~GestorDeLaberinto() {
     int numLab_destr = this->numLab;
-    delete numLab_destr;
+//    delete numLab_destr;
 }
 
 Laberinto** GestorDeLaberinto::crear(){

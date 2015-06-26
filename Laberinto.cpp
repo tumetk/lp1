@@ -11,8 +11,9 @@ using namespace std;
 
 Laberinto::Laberinto(int M,int N) {
     srand(time(NULL));
-    pctMonstruo = (rand()%10)/10;
-    pctArtefacto = (rand()%10)/10;
+    pctMonstruo = (rand()%30)+1;
+    int resta = 100 - pctMonstruo;
+    pctArtefacto = (rand()%30 )+1;
     nivelesMonstruo = new int[10];
     nivelesArtefacto = new int[10];
     for(int i=0; i<10;i++){
@@ -67,22 +68,22 @@ Laberinto::~Laberinto() {
     int finY_destr = this->finY;
     int visitado_destr = this->visitado;
 
-    delete M_destr;
-    delete N_destr;
+//    delete M_destr;
+//    delete N_destr;
     for (int indice = 0 ;  indice< N+1;indice++){
         delete[] celda_destr[indice];
     }
     delete[] celda_destr;
-    delete pctMonstruo_destr;
-    delete  pctArtefacto_destr;
+//    delete pctMonstruo_destr;
+//    delete  pctArtefacto_destr;
     delete[] nivelesMonstruo_destr ;
     delete[] nivelesArtefacto_destr;
-    delete inicioY_destr;
-    delete inicioX_destr;
-    delete finY_destr;
-    delete finX_destr;
-    delete visitado_destr;
-    
+//    delete inicioY_destr;
+//    delete inicioX_destr;
+//    delete finY_destr;
+//    delete finX_destr;
+//    delete visitado_destr;
+//    
 
 }
 
@@ -90,10 +91,19 @@ void Laberinto::cargarCelda(int fila, int col, char car){
     
     Celda *new_celda_row = this->celda[fila];
     Celda *new_celda ;
+    int probalidadMonstruo = this->pctMonstruo;
+    int probalidadArtefacto = this->pctArtefacto;
+    int porcentaje ;
     switch(car){
         case ' ':
-            this->pctMonstruo
-            new_celda_row[col].setTipo(1); //1 es ADENTRO
+           porcentaje = rand() %100 +1;
+            if (porcentaje >=1 && porcentaje <= probalidadMonstruo){
+                new_celda_row[col].setTipo(6);
+            }else if (porcentaje > probalidadMonstruo && porcentaje <= probalidadMonstruo + probalidadArtefacto ){
+                new_celda_row[col].setTipo(7);
+            }else {
+                new_celda_row[col].setTipo(1);
+            }
             break;
         case '-':
             this->inicioX = col ;
@@ -193,9 +203,10 @@ int Laberinto::verificarMovimiento(int new_posx,int new_posy){
     return 1 ;
 }
 int Laberinto::verificarMonstruo(int new_posx,int new_posy){
-    Celda new_celda = this->getCelda(new_posx,new_posy);
+    Celda new_celda = this->getCelda(new_posy,new_posx);
     if (new_celda.getTipo()==6){
-        return 1;
+       return 1;
+      
     }else{
         return 0;
     }
@@ -210,9 +221,10 @@ int Laberinto::verificarPared(int posx,int posy){
     }
 }
 int Laberinto::verificarArtefacto(int posx,int posy){
-    Celda new_celda = this->getCelda(posx,posy);
+   Celda new_celda = this->getCelda(posy,posx);
     if (new_celda.getTipo()==7){
         return 1;
+        
     }else{
         return 0;
     }
@@ -231,7 +243,7 @@ Monstruo* Laberinto::getMonstruoByPos(Game *game,int posx,int posy){
 }
 Artefacto* Laberinto::getArtefactoByPos(Game* game,int posx,int posy){
      int a = posx + posy;
-    int b = 10 ;
+    int b = 3 ;
     int ret = a % b;
     if(ret < 0){
         ret+=b;

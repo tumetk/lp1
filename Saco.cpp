@@ -56,9 +56,9 @@ Saco::~Saco(){
         delete[] lista_destr[indice];
     }
     delete[] lista_destr;
-    delete tipo_destr;
-    delete tamano_destr;
-    delete capacidad_destr;
+//    delete tipo_destr;
+//    delete tamano_destr;
+//    delete capacidad_destr;
     
 }
 void Saco::setTamano(int tamano){
@@ -81,6 +81,7 @@ int Saco::push(Artefacto* artefacto){
     }else {
         Artefacto **old_lista = this->lista;
         this->lista = new Artefacto*[this->capacidad + 10];
+        this->capacidad += 10;
         for(int x = 0 ; x< this->capacidad;x++){
             this->lista[x] = old_lista[x];
         }
